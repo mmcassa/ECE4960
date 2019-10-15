@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         for (BluetoothDevice bluetoothDevice : btDevs = locAdp.getBondedDevices()) {
             if (bluetoothDevice.getName().equals("HC-05")) {
                 btAdd.setText(bluetoothDevice.toString());
+
             }
         }
         ;
