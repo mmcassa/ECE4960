@@ -1,0 +1,601 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><script language="JavaScript" type="text/javascript">function rtwTableShrink(o) {var t = o.nextSibling;if (t.nodeType != 1) {t = t.nextSibling;}if (t.style.display == "none") {t.style.display = "";o.innerHTML = "[-]"} else {t.style.display = "none";o.innerHTML = "[+] ... "}}</script><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>
+Code Interface Report for stellaris_lp_debug_print
+</title>
+
+</head>
+<body ONLOAD="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeInterface'); else local_onload();}} catch(err) {};">
+<h1>
+Code Interface Report for stellaris_lp_debug_print
+</h1>
+<h3>
+Table of Contents
+</h3>
+<ul>
+<li>
+<a href="#sec_Entry_Point_Functions">
+Entry Point Functions
+</a>
+
+</li>
+<li>
+<a href="#sec_Inports">
+Inports
+</a>
+
+</li>
+<li>
+<a href="#sec_Outports">
+Outports
+</a>
+
+</li>
+<li>
+<a href="#sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</li>
+<li>
+<a href="#sec_Data_Stores">
+Data Stores
+</a>
+
+</li>
+
+</ul>
+<h3>
+<a name="sec_Entry_Point_Functions">
+Entry Point Functions
+</a>
+
+</h3>
+<p>
+Function: <a href="stellaris_lp_debug_print_c.html#fcn_stellaris_lp_debug_print_initialize">stellaris_lp_debug_print_initialize</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void stellaris_lp_debug_print_initialize(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Initialization entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called exactly once
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="stellaris_lp_debug_print_h.html">stellaris_lp_debug_print.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="stellaris_lp_debug_print_c.html#fcn_stellaris_lp_debug_print_step">stellaris_lp_debug_print_step</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void stellaris_lp_debug_print_step(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Output entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called periodically, every 0.2 seconds
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="stellaris_lp_debug_print_h.html">stellaris_lp_debug_print.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="stellaris_lp_debug_print_c.html#fcn_stellaris_lp_debug_print_terminate">stellaris_lp_debug_print_terminate</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void stellaris_lp_debug_print_terminate(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Termination entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called exactly once
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="stellaris_lp_debug_print_h.html">stellaris_lp_debug_print.h</a>
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Inports">
+Inports
+</a>
+
+</h3>
+<p>
+No Inports in model.
+</p>
+<h3>
+<a name="sec_Outports">
+Outports
+</a>
+
+</h3>
+<p>
+No Outports in model.
+</p>
+<h3>
+<a name="sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</h3>
+<span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="38%" align="left" valign="top">
+<b>
+Parameter Source
+</b>
+
+</th>
+<th width="23%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="19%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="9%" align="left" valign="top">
+<b>
+Scaling
+</b>
+
+</th>
+<th width="9%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:53')" name="code2model" class="code2model">&lt;Root&gt;/Bitwise Operator1</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.BitwiseOperator1_BitMask
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:54')" name="code2model" class="code2model">&lt;Root&gt;/Bitwise Operator2</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.BitwiseOperator2_BitMask
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:68')" name="code2model" class="code2model">&lt;Root&gt;/GPIO Write</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.GPIOWrite_p1
+</td>
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:38')" name="code2model" class="code2model">&lt;Root&gt;/GPIO Setup</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.GPIOSetup_p1
+</td>
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:38')" name="code2model" class="code2model">&lt;Root&gt;/GPIO Setup</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.GPIOSetup_p2
+</td>
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:72')" name="code2model" class="code2model">&lt;Root&gt;/Gain1</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.Gain1_Gain
+</td>
+<td width="19%" align="left" valign="top">
+uint16_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 16
+FractionLength: 14
+">ufix16_En14</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:51')" name="code2model" class="code2model">&lt;Root&gt;/Debug Print</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.DebugPrint_p1
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+[1  32]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:70')" name="code2model" class="code2model">&lt;Root&gt;/RED LED</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.REDLED_Value
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:65')" name="code2model" class="code2model">&lt;Root&gt;/BLUE LED</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.BLUELED_Value
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:69')" name="code2model" class="code2model">&lt;Root&gt;/GREEN LED</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.GREENLED_Value
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:38')" name="code2model" class="code2model">&lt;Root&gt;/GPIO Setup</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.GPIOSetup_p3
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:38')" name="code2model" class="code2model">&lt;Root&gt;/GPIO Setup</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.GPIOSetup_p4
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:61')" name="code2model" class="code2model">&lt;Root&gt;/Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.Gain_Gain
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 8
+FractionLength: 11
+">ufix8_En11</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:73')" name="code2model" class="code2model">&lt;Root&gt;/Gain2</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.Gain2_Gain
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 8
+FractionLength: 5
+">ufix8_En5</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('stellaris_lp_debug_print:76')" name="code2model" class="code2model">&lt;Root&gt;/Gain3</a>
+</td>
+<td width="23%" align="left" valign="top">
+stellaris_lp_debug_print_P.Gain3_Gain
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 8
+FractionLength: 4
+">ufix8_En4</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Data_Stores">
+Data Stores
+</a>
+
+</h3>
+<p>
+No data stores in the model; note that this report lists only data stores with non-auto storage class and global data stores
+</p>
+
+</body>
+
+</html>

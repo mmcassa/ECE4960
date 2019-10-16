@@ -1,0 +1,54 @@
+function TraceInfoFlag() {
+    this.traceFlag = new Array();
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:55c17"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:56c17"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:75c31"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:85c24"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:85c26"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:85c75"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:86c16"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:86c53"]=1;
+    this.traceFlag["stellaris_lp_blink_bluetooth.c:91c67"]=1;
+}
+top.TraceInfoFlag.instance = new TraceInfoFlag();
+function TraceInfoLineFlag() {
+    this.lineTraceFlag = new Array();
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:46"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:47"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:50"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:55"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:56"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:57"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:60"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:65"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:70"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:75"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:76"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:85"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:86"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:91"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:92"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:99"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:100"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:101"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:108"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:109"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:110"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:113"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:114"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:118"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:127"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:128"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:131"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:134"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:137"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:144"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:145"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:146"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:147"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:150"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:153"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:154"]=1;
+    this.lineTraceFlag["stellaris_lp_blink_bluetooth.c:158"]=1;
+}
+top.TraceInfoLineFlag.instance = new TraceInfoLineFlag();

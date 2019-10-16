@@ -1,0 +1,50 @@
+function TraceInfoFlag() {
+    this.traceFlag = new Array();
+    this.traceFlag["stellaris_lp_debug_print.c:45c77"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:46c71"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:52c22"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:55c47"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:55c53"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:56c25"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:64c37"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:78c55"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:79c57"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:81c78"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:82c27"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:82c35"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:83c44"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:83c78"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:84c11"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:84c54"]=1;
+    this.traceFlag["stellaris_lp_debug_print.c:85c56"]=1;
+}
+top.TraceInfoFlag.instance = new TraceInfoFlag();
+function TraceInfoLineFlag() {
+    this.lineTraceFlag = new Array();
+    this.lineTraceFlag["stellaris_lp_debug_print.c:39"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:45"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:46"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:47"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:52"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:55"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:56"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:63"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:64"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:65"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:77"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:78"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:79"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:80"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:81"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:82"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:83"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:84"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:85"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:88"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:95"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:98"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:99"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:100"]=1;
+    this.lineTraceFlag["stellaris_lp_debug_print.c:101"]=1;
+}
+top.TraceInfoLineFlag.instance = new TraceInfoLineFlag();
