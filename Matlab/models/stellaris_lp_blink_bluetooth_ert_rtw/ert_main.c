@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'stellaris_lp_blink_bluetooth'.
  *
- * Model version                  : 1.88
+ * Model version                  : 1.91
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Tue Oct 15 17:22:09 2019
+ * C/C++ source code generated on : Wed Oct 16 20:19:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -51,7 +51,7 @@ volatile boolean_T stopRequested = false;
 int main(int argc, char **argv)
 {
   volatile boolean_T runModel = true;
-  float modelBaseRate = 0.2;
+  float modelBaseRate = 0.0001;
   float systemClock = 100;
   system_init();
   ((void) 0);

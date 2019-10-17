@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'stellaris_lp_blink_bluetooth'.
  *
- * Model version                  : 1.88
+ * Model version                  : 1.91
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Tue Oct 15 17:22:09 2019
+ * C/C++ source code generated on : Wed Oct 16 20:19:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -31,6 +31,9 @@
 
 /* Parameters (auto storage) */
 typedef struct P_stellaris_lp_blink_bluetooth_ P_stellaris_lp_blink_bluetooth;
+
+/* Forward declaration for rtModel */
+typedef struct tag_RTM_stellaris_lp_blink_blue RT_MODEL_stellaris_lp_blink_blu;
 
 #endif                                 /* RTW_HEADER_stellaris_lp_blink_bluetooth_types_h_ */
 

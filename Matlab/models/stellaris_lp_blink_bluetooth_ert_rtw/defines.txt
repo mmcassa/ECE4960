@@ -1,5 +1,5 @@
 MODEL=stellaris_lp_blink_bluetooth
-NUMST=1
+NUMST=4
 NCSTATES=0
 HAVESTDIO
 TERMFCN=1

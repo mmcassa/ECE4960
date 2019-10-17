@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'stellaris_lp_blink_bluetooth'.
  *
- * Model version                  : 1.88
+ * Model version                  : 1.91
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Tue Oct 15 17:22:09 2019
+ * C/C++ source code generated on : Wed Oct 16 20:19:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -45,8 +45,11 @@
 typedef struct {
   int_T Unpack_IWORK[2];               /* '<Root>/Unpack' */
   int32_T DataTypeConversion3;         /* '<Root>/Data Type Conversion3' */
+  int32_T DataTypeConversion1;         /* '<Root>/Data Type Conversion1' */
+  int32_T DataTypeConversion2;         /* '<Root>/Data Type Conversion2' */
   uint8_T BytePack[4];                 /* '<Root>/Byte Pack' */
   uint8_T Unpack;                      /* '<Root>/Unpack' */
+  uint8_T Subtract;                    /* '<Root>/Subtract' */
   uint8_T In1;                         /* '<S2>/In1' */
   uint8_T Memory_PreviousInput;        /* '<Root>/Memory' */
 } DW_stellaris_lp_blink_bluetooth;
@@ -102,6 +105,20 @@ struct P_stellaris_lp_blink_bluetooth_ {
                                         */
 };
 
+/* Real-time Model Data Structure */
+struct tag_RTM_stellaris_lp_blink_blue {
+  /*
+   * Timing:
+   * The following substructure contains information regarding
+   * the timing information for the model.
+   */
+  struct {
+    struct {
+      uint16_T TID[4];
+    } TaskCounters;
+  } Timing;
+};
+
 /* Block parameters (auto storage) */
 extern P_stellaris_lp_blink_bluetooth stellaris_lp_blink_bluetooth_P;
 
@@ -115,6 +132,9 @@ extern ExtY_stellaris_lp_blink_bluetoo stellaris_lp_blink_bluetooth_Y;
 extern void stellaris_lp_blink_bluetooth_initialize(void);
 extern void stellaris_lp_blink_bluetooth_step(void);
 extern void stellaris_lp_blink_bluetooth_terminate(void);
+
+/* Real-time Model object */
+extern RT_MODEL_stellaris_lp_blink_blu *const stellaris_lp_blink_bluetooth_M;
 
 /*-
  * The generated code includes comments that allow you to trace directly
