@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     InputThread streamRead;
     private InputStream btInput;
     private OutputStream btOutput;
+    private SeekBar earlBar;
     String hcAddress;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         btAdd = findViewById(R.id.btAdd);
         inTest = findViewById(R.id.testInput);
+        earlBar = findViewById(R.id.earlBar);
 
         // Set default height to latched
         hover.setText("0.0");
@@ -165,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
 
     private class InputThread extends Thread {
         int inBytes = 4;
-
         byte[] buf = new byte[inBytes];
         ByteBuffer bbuf;
 
@@ -182,8 +184,9 @@ public class MainActivity extends AppCompatActivity {
                     bbuf = ByteBuffer.wrap(buf);
                     bbuf.order(ByteOrder.LITTLE_ENDIAN);
                     bufInt = bbuf.getInt();
-                    if (isBufEmpty > -1 && bufInt > 150 && bufInt < 4000) {
+                    if (isBufEmpty > -1 && bufInt > 200 && bufInt < 4000) {
                         inTest.setText(Integer.toString(bufInt));
+                        earlBar.setProgress((bufInt-200)/38);
                     }
 
                 } catch (IOException e) {
