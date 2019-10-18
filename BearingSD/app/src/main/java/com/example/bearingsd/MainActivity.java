@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         hover = findViewById(R.id.heightDesire);
         myBluetooth = BluetoothAdapter.getDefaultAdapter();
         btDevs = myBluetooth.getBondedDevices();
-        streamRead = new InputThread();
+
 
         btAdd = findViewById(R.id.btAdd);
         inTest = findViewById(R.id.testInput);
@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         if (btSocket != null && btSocket.isConnected()) {
                             isBtConnected = false;
-                            streamRead.stop();
+                            //streamRead.stop();
                             btSocket.close();
+                            btSocket = null;
                             Toast.makeText(getApplicationContext(), "Socket closed", Toast.LENGTH_SHORT).show();
                         }
                     } catch (IOException e) {
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startRead(View view) {
+        streamRead = new InputThread();
         streamRead.start();
     }
 
@@ -152,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (!ConnectSuccess) {
                 Toast.makeText(getApplicationContext(),"Connection Failed",Toast.LENGTH_SHORT).show();
-                finish();
             } else {
                 Toast.makeText(getApplicationContext(),"Connected",Toast.LENGTH_SHORT).show();
                 isBtConnected = true;
@@ -172,11 +173,12 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             int isBufEmpty = 0;
             int bufInt;
-            while(isBtConnected && btSocket.isConnected()) {
+            while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
                     Thread.sleep(20);
-                    isBufEmpty = btInput.read(buf,0,inBytes);
+                    if (btSocket != null && btSocket.isConnected())
+                        isBufEmpty = btInput.read(buf,0,inBytes);
                     bbuf = ByteBuffer.wrap(buf);
                     bbuf.order(ByteOrder.LITTLE_ENDIAN);
                     bufInt = bbuf.getInt();
@@ -187,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     Toast.makeText(getApplicationContext(),"Error while reading",Toast.LENGTH_SHORT).show();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
                     Toast.makeText(getApplicationContext(),"Error while sleeping",Toast.LENGTH_SHORT).show();
                 }
             }
