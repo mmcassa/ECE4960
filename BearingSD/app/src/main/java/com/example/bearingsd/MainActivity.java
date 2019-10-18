@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                     bbuf.order(ByteOrder.LITTLE_ENDIAN);
                     bufInt = bbuf.getInt();
                     if (isBufEmpty > -1 && bufInt > 200 && bufInt < 4000) {
-                        inTest.setText(Integer.toString(bufInt));
+                        inTest.setText(Integer.toString(bufInt)+"mm");
                         earlBar.setProgress((bufInt-200)/38);
                     }
 
