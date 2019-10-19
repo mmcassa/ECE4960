@@ -4,10 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="seekBar">#647E64</color>
-    <color name="seekThumb">#092C0B</color>
+    <color name="seekThumb">#000000</color>
+    <color name="thumbGreen">#09fa43</color>
+    <color name="thumbYellow">#DBB91B</color>
     <color name="gradientStart">#CECECE</color>
-    <color name="gradientEnd">#90FF90</color>
+    <color name="gradientEnd">#8CA1BB</color>
     <color name="barsBackground">#D3D0D0</color>
-    <color name="namesBackground">#AFFAAF</color>
-    <color name="heightBackground">#C8E7C8</color>
+    <color name="namesBackground">#AFE9FA</color>
+    <color name="heightBackground">#C8E0E7</color>
 </resources>

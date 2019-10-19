@@ -2,12 +2,14 @@ package com.example.bearingsd;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothSocket;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -28,13 +30,13 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
 
     private TextView hover;
-    private TextView inTest;
     BluetoothAdapter myBluetooth;
     BluetoothSocket btSocket;
     private boolean isBtConnected = false;
     private ProgressDialog progress;
     private Set<BluetoothDevice> btDevs;
     private TextView btAdd;
+    private TextView earlHeight;
     InputThread streamRead;
     private InputStream btInput;
     private OutputStream btOutput;
@@ -54,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         btAdd = findViewById(R.id.btAdd);
-        inTest = findViewById(R.id.testInput);
         earlBar = findViewById(R.id.earlBar);
+        earlHeight = findViewById(R.id.earlHeight);
 
         // Set default height to latched
         hover.setText("0.0");
@@ -99,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
                 hcAddress = bluetoothDevice.toString();
                 btAdd.setText(hcAddress);
                 // Open Connection to bt device and socket
-                if (!isBtConnected)
+                if (!isBtConnected) {
                     new ConnectBT().execute();
-                else {
+                } else {
                     try {
                         if (btSocket != null && btSocket.isConnected()) {
                             isBtConnected = false;
@@ -160,6 +162,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(),"Connected",Toast.LENGTH_SHORT).show();
                 isBtConnected = true;
+                streamRead = new InputThread();
+                streamRead.start();
             }
 
             progress.dismiss();
@@ -185,8 +189,14 @@ public class MainActivity extends AppCompatActivity {
                     bbuf.order(ByteOrder.LITTLE_ENDIAN);
                     bufInt = bbuf.getInt();
                     if (isBufEmpty > -1 && bufInt > 200 && bufInt < 4000) {
-                        inTest.setText(Integer.toString(bufInt)+"mm");
+                        if ((((bufInt-200)/38)) < 55 && (((bufInt-200)/38)) > 45)
+                            earlBar.setThumb(getDrawable(R.drawable.thumb_green));
+                        else if ((((bufInt-200)/38)) < 65 && (((bufInt-200)/38)) > 35)
+                            earlBar.setThumb(getDrawable(R.drawable.thumb_yellow));
+                        else
+                            earlBar.setThumb(getDrawable(R.drawable.custom_thumb));
                         earlBar.setProgress((bufInt-200)/38);
+                        earlHeight.setText(Integer.toString(bufInt)+"mm");
                     }
 
                 } catch (IOException e) {
