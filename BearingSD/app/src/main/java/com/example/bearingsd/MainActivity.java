@@ -29,18 +29,29 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView hover;
+    private static byte latch = 0x33;
+    private static byte lower = 0x31;
+    private static byte raise = 0x32;
+
+
     BluetoothAdapter myBluetooth;
     BluetoothSocket btSocket;
     private boolean isBtConnected = false;
     private ProgressDialog progress;
     private Set<BluetoothDevice> btDevs;
+
     private TextView btAdd;
     private TextView earlHeight;
+    private TextView hover;
+    private SeekBar earlBar;
+    private Button upButton;
+    private Button downButton;
+    private Button latchButton;
+
     InputThread streamRead;
     private InputStream btInput;
     private OutputStream btOutput;
-    private SeekBar earlBar;
+
     String hcAddress;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -50,17 +61,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Global Instantiations
-        hover = findViewById(R.id.heightDesire);
+
         myBluetooth = BluetoothAdapter.getDefaultAdapter();
         btDevs = myBluetooth.getBondedDevices();
 
-
+        hover = findViewById(R.id.heightDesire);
         btAdd = findViewById(R.id.btAdd);
         earlBar = findViewById(R.id.earlBar);
         earlHeight = findViewById(R.id.earlHeight);
+        upButton = findViewById(R.id.moveUpButton);
+        downButton = findViewById(R.id.moveDownButton);
+        latchButton = findViewById(R.id.latchButton);
 
         // Set default height to latched
         hover.setText("0.0");
+        upButton.setClickable(false);
+        downButton.setClickable(false);
+        latchButton.setClickable(false);
+    }
+
+    public void setBtOutput(View view,byte change) {
+        try {
+            btOutput.write(change);
+            btOutput.write(0x30);
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(),"Last message not sent",Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void hoverDown(View view) {
@@ -68,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         double hovF = Double.valueOf(hover.getText().toString());
 
         if (hovF <= 1.1) {
+            setBtOutput(view,lower);
             hovF += .1;
             hovF = Math.round(hovF*100.0)/100.0;
             String hovS = String.valueOf(hovF);
@@ -79,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         double hovF = Double.valueOf(hover.getText().toString());
         if (hovF > 0) {
+            setBtOutput(view,raise);
             hovF -= .1;
             if (hovF < 0) {
                 hovF = 0.0;
@@ -92,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void latchPlate(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
+        setBtOutput(view,latch);
         hover.setText("0.0");
     }
 
@@ -107,9 +136,10 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         if (btSocket != null && btSocket.isConnected()) {
                             isBtConnected = false;
-                            //streamRead.stop();
                             btSocket.close();
                             btSocket = null;
+                            btInput = null;
+                            btOutput = null;
                             Toast.makeText(getApplicationContext(), "Socket closed", Toast.LENGTH_SHORT).show();
                         }
                     } catch (IOException e) {
@@ -119,11 +149,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-    }
-
-    public void startRead(View view) {
-        streamRead = new InputThread();
-        streamRead.start();
     }
 
     private class ConnectBT extends AsyncTask<Void, Void, Void> {
@@ -164,6 +189,9 @@ public class MainActivity extends AppCompatActivity {
                 isBtConnected = true;
                 streamRead = new InputThread();
                 streamRead.start();
+                upButton.setClickable(true);
+                downButton.setClickable(true);
+                latchButton.setClickable(true);
             }
 
             progress.dismiss();
