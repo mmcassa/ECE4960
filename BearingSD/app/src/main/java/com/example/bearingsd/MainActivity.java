@@ -1,6 +1,4 @@
 package com.example.bearingsd;
-
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -29,31 +27,39 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Command bytes
     private static byte latch = 0x33;
     private static byte lower = 0x31;
     private static byte raise = 0x32;
 
+    // Height References
+    private int heightRef = 10;
 
+    // Bluetooth universals
+    private boolean isBtConnected = false;
     BluetoothAdapter myBluetooth;
     BluetoothSocket btSocket;
-    private boolean isBtConnected = false;
+    private InputStream btInput;
+    private OutputStream btOutput;
     private ProgressDialog progress;
+    String hcAddress;
+    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private Set<BluetoothDevice> btDevs;
 
+    // App layout objects
     private TextView btAdd;
     private TextView earlHeight;
     private TextView hover;
-    private SeekBar earlBar;
+    private SeekBar seekBars;
     private Button upButton;
     private Button downButton;
     private Button latchButton;
 
+    // Classes
     InputThread streamRead;
-    private InputStream btInput;
-    private OutputStream btOutput;
 
-    String hcAddress;
-    static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         hover = findViewById(R.id.heightDesire);
         btAdd = findViewById(R.id.btAdd);
-        earlBar = findViewById(R.id.earlBar);
+        //seekBars = findViewById(R.id.earlBar);
         earlHeight = findViewById(R.id.earlHeight);
         upButton = findViewById(R.id.moveUpButton);
         downButton = findViewById(R.id.moveDownButton);
@@ -95,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (hovF <= 1.1) {
             setBtOutput(view,lower);
+            heightRef -= 1;
             hovF += .1;
             hovF = Math.round(hovF*100.0)/100.0;
             String hovS = String.valueOf(hovF);
@@ -108,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         if (hovF > 0) {
             setBtOutput(view,raise);
             hovF -= .1;
+            heightRef -= 1;
             if (hovF < 0) {
                 hovF = 0.0;
             }
@@ -121,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     public void latchPlate(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         setBtOutput(view,latch);
+        heightRef = 0;
         hover.setText("0.0");
     }
 
@@ -136,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         if (btSocket != null && btSocket.isConnected()) {
                             isBtConnected = false;
+                            //Thread.sleep(10);
                             btSocket.close();
                             btSocket = null;
                             btInput = null;
@@ -144,7 +154,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } catch (IOException e) {
                         Toast.makeText(getApplicationContext(), "Failed to close Socket", Toast.LENGTH_SHORT).show();
-                    }
+                    } /*catch (InterruptedException e) {
+
+                    } */
                 }
 
             }
@@ -205,33 +217,78 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
+            String heightTxt;
             int isBufEmpty = 0;
-            int bufInt;
+            int bufInt,accuracy;
+            double bufDoub;
+
+            int barSelect = 1;
+            seekBars = findViewById(R.id.arleBar);
+
+            try {
+                btInput.skip(btInput.available() % 12);
+            } catch (IOException e) {
+
+            }
+
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
-                    Thread.sleep(20);
-                    if (btSocket != null && btSocket.isConnected())
-                        isBufEmpty = btInput.read(buf,0,inBytes);
-                    bbuf = ByteBuffer.wrap(buf);
-                    bbuf.order(ByteOrder.LITTLE_ENDIAN);
-                    bufInt = bbuf.getInt();
-                    if (isBufEmpty > -1 && bufInt > 200 && bufInt < 4000) {
-                        if ((((bufInt-200)/38)) < 55 && (((bufInt-200)/38)) > 45)
-                            earlBar.setThumb(getDrawable(R.drawable.thumb_green));
-                        else if ((((bufInt-200)/38)) < 65 && (((bufInt-200)/38)) > 35)
-                            earlBar.setThumb(getDrawable(R.drawable.thumb_yellow));
-                        else
-                            earlBar.setThumb(getDrawable(R.drawable.custom_thumb));
-                        earlBar.setProgress((bufInt-200)/38);
-                        earlHeight.setText(Integer.toString(bufInt)+"mm");
+                    while(isBtConnected && btInput.available() < inBytes) {
+                    }
+                    if (isBtConnected && btSocket != null && btSocket.isConnected()) {
+                        isBufEmpty = btInput.read(buf, 0, inBytes);
+                    } else if (btSocket != null && !btSocket.isConnected()) {
+                        isBtConnected = false;
+                        Toast.makeText(getApplicationContext(),"Unexpected disconnect",Toast.LENGTH_LONG).show();
+                    }
+                    if (isBufEmpty == 4) {
+                        bbuf = ByteBuffer.wrap(buf);
+                        bbuf.order(ByteOrder.LITTLE_ENDIAN);
+                        bufInt = bbuf.getInt();
+                        if (bufInt < 0 || bufInt > 30) {
+                            btInput.skip(7);
+                        } else {
+                            accuracy = (bufInt - heightRef) + 50;
+
+                            if (accuracy < 60 && accuracy > 40)
+                                seekBars.setThumb(getDrawable(R.drawable.thumb_green));
+                            else if (accuracy < 70 && accuracy > 30)
+                                seekBars.setThumb(getDrawable(R.drawable.thumb_yellow));
+                            else
+                                seekBars.setThumb(getDrawable(R.drawable.custom_thumb));
+
+
+                            if (((bufInt - heightRef) + 50) > 100)
+                                seekBars.setProgress(100);
+                            else if (((bufInt - heightRef) + 50) < 0)
+                                seekBars.setProgress(0);
+                            else
+                                seekBars.setProgress((bufInt - heightRef) + 50);
+
+                            heightTxt = ((double) bufInt/10) + " mm";//+ Integer.toHexString(bufInt);
+                            earlHeight.setText(heightTxt);
+
+                            if (++barSelect == 4) {
+                                barSelect = 1;
+                                seekBars = findViewById(R.id.arleBar);
+                                earlHeight = findViewById(R.id.arleHeight);
+                            } else if (barSelect == 2) {
+                                seekBars = findViewById(R.id.earlBar);
+                                earlHeight = findViewById(R.id.earlHeight);
+                            } else {
+                                seekBars = findViewById(R.id.lareBar);
+                                earlHeight = findViewById(R.id.lareHeight);
+                            }
+                        }
+                    } else {
+                        btInput.skip(inBytes-isBufEmpty+8);
                     }
 
                 } catch (IOException e) {
                     Toast.makeText(getApplicationContext(),"Error while reading",Toast.LENGTH_SHORT).show();
-                } catch (InterruptedException e) {
-                    Toast.makeText(getApplicationContext(),"Error while sleeping",Toast.LENGTH_SHORT).show();
                 }
+
             }
         }
     }
