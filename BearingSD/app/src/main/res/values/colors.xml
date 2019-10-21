@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#598DBB</color>
+    <color name="colorPrimaryDark">#385568</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="seekBar">#647E64</color>
-    <color name="seekThumb">#000000</color>
+    <color name="seekBar">#FFFFFF</color>
+    <color name="seekThumb">#FFFFFF</color>
     <color name="thumbGreen">#09fa43</color>
     <color name="thumbYellow">#DBB91B</color>
-    <color name="gradientStart">#FFFFFF</color>
-    <color name="gradientEnd">#FFFFFF</color>
+    <color name="gradientStart">#598DBB</color>
+    <color name="gradientEnd">#385568</color>
     <color name="barsBackground">#D3D0D0</color>
     <color name="namesBackground">#AFE9FA</color>
     <color name="heightBackground">#C8E0E7</color>
+    <color name="black">#000000</color>
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#D8D8D8</color>
+    <color name="transparent">#00909090</color>
+    <color name="whiteTransparent">#31FFFFFF</color>
+    <color name="whiteTransparent2">#16FFFFFF</color>
+    <color name="whiteTransparent3">#36FFFFFF</color>
 </resources>

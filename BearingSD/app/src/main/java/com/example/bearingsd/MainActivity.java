@@ -25,6 +25,7 @@ import java.nio.ByteOrder;
 import java.util.Set;
 import java.util.UUID;
 
+
 public class MainActivity extends AppCompatActivity {
 
     // Command bytes
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         // Global Instantiations

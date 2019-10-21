@@ -1,35 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
-        <shape
-            android:shape="line">
-            <corners android:radius="4dp"/>
+        <shape>
             <stroke
-                android:color="@color/seekBar"
-                android:width="4dp"/>
+                android:width="15dp"
+                android:color="@color/transparent"
+                />
+            <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp"/>
+            <corners
+                android:bottomRightRadius="200dp"
+                android:bottomLeftRadius="200dp"
+                android:topLeftRadius="200dp"
+                android:topRightRadius="200dp"/>
+            <solid android:color="@color/seekBar"/>
+
         </shape>
     </item>
 
     <item android:id="@android:id/progress">
         <clip>
-            <shape
-                android:shape="line">
-                <corners android:radius="4dp"/>
+            <shape>
                 <stroke
-                    android:color="@color/seekBar"
-                    android:width="4dp"/>
+                    android:width="15dp"
+                    android:color="@color/transparent"
+                    />
+                <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp"/>
+                <corners
+                    android:bottomRightRadius="200dp"
+                    android:bottomLeftRadius="200dp"
+                    android:topLeftRadius="200dp"
+                    android:topRightRadius="200dp"/>
+                <solid android:color="@color/seekBar"/>
+
             </shape>
         </clip>
     </item>
 
     <item android:id="@android:id/secondaryProgress">
         <clip>
-            <shape
-                android:shape="line">
-                <corners android:radius="4dp"/>
+            <shape>
                 <stroke
-                    android:color="@color/seekBar"
-                    android:width="4dp"/>
+                    android:width="15dp"
+                    android:color="@color/transparent"
+                    />
+                <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp"/>
+                <corners
+                    android:bottomRightRadius="200dp"
+                    android:bottomLeftRadius="200dp"
+                    android:topLeftRadius="200dp"
+                    android:topRightRadius="200dp"/>
+                <solid android:color="@color/seekBar"/>
+
             </shape>
         </clip>
     </item>
