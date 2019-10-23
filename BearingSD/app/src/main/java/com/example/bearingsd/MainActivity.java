@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private static byte raise = 0x32;
 
     // Height References
-    private int heightRef = 10;
+    private int heightRef = 0;
+    private int range = 5;
 
     // Bluetooth universals
     private boolean isBtConnected = false;
@@ -75,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
         hover = findViewById(R.id.heightDesire);
         btAdd = findViewById(R.id.btAdd);
-        //seekBars = findViewById(R.id.earlBar);
         earlHeight = findViewById(R.id.earlHeight);
         upButton = findViewById(R.id.moveUpButton);
         downButton = findViewById(R.id.moveDownButton);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (hovF <= 1.1) {
             setBtOutput(view,lower);
-            heightRef -= 1;
+            heightRef += 1;
             hovF += .1;
             hovF = Math.round(hovF*100.0)/100.0;
             String hovS = String.valueOf(hovF);
@@ -136,31 +136,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkConnection(View view) {
-        for (BluetoothDevice bluetoothDevice : btDevs = myBluetooth.getBondedDevices()) {
-            if (bluetoothDevice.getName().equals("HC-05")) {
-                hcAddress = bluetoothDevice.toString();
-                btAdd.setText(hcAddress);
-                // Open Connection to bt device and socket
-                if (!isBtConnected) {
+        // If not connected attempt connect
+        if(!isBtConnected) {
+            for (BluetoothDevice bluetoothDevice : btDevs = myBluetooth.getBondedDevices()) {
+                if (bluetoothDevice.getName().equals("HC-05")) {
+                    hcAddress = bluetoothDevice.toString();
+
+                    // Open Connection to bt device and socket
+                    //if (!isBtConnected) {
                     new ConnectBT().execute();
-                } else {
-                    try {
-                        if (btSocket != null && btSocket.isConnected()) {
-                            isBtConnected = false;
-                            //Thread.sleep(10);
-                            btSocket.close();
-                            btSocket = null;
-                            btInput = null;
-                            btOutput = null;
-                            Toast.makeText(getApplicationContext(), "Socket closed", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (IOException e) {
-                        Toast.makeText(getApplicationContext(), "Failed to close Socket", Toast.LENGTH_SHORT).show();
-                    } /*catch (InterruptedException e) {
 
-                    } */
                 }
+            }
+        // If connected attempt disconnect
+        } else {
+            try {
+                isBtConnected = false;
+                btSocket.close();
+                btSocket = null;
+                btInput = null;
+                btOutput = null;
+                Toast.makeText(getApplicationContext(), "Socket closed", Toast.LENGTH_SHORT).show();
+                upButton.setClickable(false);
+                downButton.setClickable(false);
+                latchButton.setClickable(false);
+                btAdd.setText("Disconnected");
+                hover.setText("0.0");
 
+            } catch (IOException e) {
+            //catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "Failed to close Socket", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -201,8 +206,16 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(),"Connected",Toast.LENGTH_SHORT).show();
                 isBtConnected = true;
+                btAdd.setText("Connected to HC-05");
                 streamRead = new InputThread();
                 streamRead.start();
+                try {
+                    btOutput.write(latch);
+                    btOutput.write(0x30);
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(),"Failed to send initial latch",Toast.LENGTH_SHORT).show();
+                }
+
                 upButton.setClickable(true);
                 downButton.setClickable(true);
                 latchButton.setClickable(true);
@@ -221,8 +234,8 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             String heightTxt;
             int isBufEmpty = 0;
-            int bufInt,accuracy;
-            double bufDoub;
+            int bufInt;
+            double accuracy;
 
             int barSelect = 1;
             seekBars = findViewById(R.id.arleBar);
@@ -230,43 +243,52 @@ public class MainActivity extends AppCompatActivity {
             try {
                 btInput.skip(btInput.available() % 12);
             } catch (IOException e) {
-
+                Toast.makeText(getApplicationContext(),"Skip error.",Toast.LENGTH_LONG).show();
             }
 
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
-                    while(isBtConnected && btInput.available() < inBytes) {
+                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < inBytes) {
                     }
                     if (isBtConnected && btSocket != null && btSocket.isConnected()) {
                         isBufEmpty = btInput.read(buf, 0, inBytes);
-                    } else if (btSocket != null && !btSocket.isConnected()) {
-                        isBtConnected = false;
-                        Toast.makeText(getApplicationContext(),"Unexpected disconnect",Toast.LENGTH_LONG).show();
+                    } else {
+                        if (!isBtConnected || !(btSocket.isConnected()))
+                            break;
+                        isBufEmpty = 0;
                     }
+
                     if (isBufEmpty == 4) {
                         bbuf = ByteBuffer.wrap(buf);
                         bbuf.order(ByteOrder.LITTLE_ENDIAN);
                         bufInt = bbuf.getInt();
                         if (bufInt < 0 || bufInt > 30) {
-                            btInput.skip(7);
+                            if (isBtConnected && btSocket != null)
+                                btInput.skip(7);
+                            else {
+                                Toast.makeText(getApplicationContext(), "Error while ubf skip 1", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
                         } else {
-                            accuracy = (bufInt - heightRef) + 50;
+                            accuracy = (bufInt - heightRef);
+                            if (accuracy != 0.0)
+                                accuracy /= range;
 
-                            if (accuracy < 60 && accuracy > 40)
+                            if (Math.abs(accuracy) <= .1)
                                 seekBars.setThumb(getDrawable(R.drawable.thumb_green));
-                            else if (accuracy < 70 && accuracy > 30)
+                            else if (Math.abs(accuracy) <= .2)
                                 seekBars.setThumb(getDrawable(R.drawable.thumb_yellow));
                             else
                                 seekBars.setThumb(getDrawable(R.drawable.custom_thumb));
 
 
-                            if (((bufInt - heightRef) + 50) > 100)
-                                seekBars.setProgress(100);
-                            else if (((bufInt - heightRef) + 50) < 0)
-                                seekBars.setProgress(0);
+                            if (accuracy >= 1)
+                                seekBars.setProgress(95);
+                            else if (accuracy <= -1)
+                                seekBars.setProgress(-95);
                             else
-                                seekBars.setProgress((bufInt - heightRef) + 50);
+                                seekBars.setProgress((int) (accuracy*100));
 
                             heightTxt = ((double) bufInt/10) + " mm";//+ Integer.toHexString(bufInt);
                             earlHeight.setText(heightTxt);
@@ -284,13 +306,29 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     } else {
-                        btInput.skip(inBytes-isBufEmpty+8);
+                        if (isBtConnected && btSocket != null)
+                            btInput.skip(inBytes-isBufEmpty+8);
+                        else {
+                            Toast.makeText(getApplicationContext(),"Error while buf skip",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
                     }
 
                 } catch (IOException e) {
                     Toast.makeText(getApplicationContext(),"Error while reading",Toast.LENGTH_SHORT).show();
                 }
 
+            }
+            if (isBtConnected) {
+                isBtConnected = false;
+                btSocket = null;
+                btInput = null;
+                btOutput = null;
+                Toast.makeText(getApplicationContext(), "Socket closed", Toast.LENGTH_SHORT).show();
+                upButton.setClickable(false);
+                downButton.setClickable(false);
+                latchButton.setClickable(false);
+                btAdd.setText("Disconnected");
             }
         }
     }
