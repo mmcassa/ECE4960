@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.41</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.117</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Tue Oct 15 19:40:34 2019</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Thu Oct 31 18:58:25 2019</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -57,11 +57,11 @@
 <tr name="23" id="23">
 <td><a id="l23" class='ln'>23</a></td><td><span class="kw">volatile</span> <span class="kw">int</span> <a id="23c14" class="tk">IsrOverrun</a> = 0;</td></tr>
 <tr name="24" id="24">
-<td><a id="l24" class='ln'>24</a></td><td><a id="24c1" class="tk">boolean_T</a> <a id="24c11" class="tk">isRateRunning</a>[3] = <span class="br">{</span> 0, 0, 0 <span class="br">}</span>;</td></tr>
+<td><a id="l24" class='ln'>24</a></td><td><a id="24c1" class="tk">boolean_T</a> <a id="24c11" class="tk">isRateRunning</a>[5] = <span class="br">{</span> 0, 0, 0, 0, 0 <span class="br">}</span>;</td></tr>
 <tr name="25" id="25">
 <td><a id="l25" class='ln'>25</a></td><td></td></tr>
 <tr name="26" id="26">
-<td><a id="l26" class='ln'>26</a></td><td><a id="26c1" class="tk">boolean_T</a> <a id="26c11" class="tk">need2runFlags</a>[3] = <span class="br">{</span> 0, 0, 0 <span class="br">}</span>;</td></tr>
+<td><a id="l26" class='ln'>26</a></td><td><a id="26c1" class="tk">boolean_T</a> <a id="26c11" class="tk">need2runFlags</a>[5] = <span class="br">{</span> 0, 0, 0, 0, 0 <span class="br">}</span>;</td></tr>
 <tr name="27" id="27">
 <td><a id="l27" class='ln'>27</a></td><td></td></tr>
 <tr name="28" id="28">
@@ -69,7 +69,7 @@
 <tr name="29" id="29">
 <td><a id="l29" class='ln'>29</a></td><td><span class="br">{</span></td></tr>
 <tr name="30" id="30">
-<td><a id="l30" class='ln'>30</a></td><td>  <a id="30c3" class="tk">boolean_T</a> <a id="30c13" class="tk">eventFlags</a>[3];</td></tr>
+<td><a id="l30" class='ln'>30</a></td><td>  <a id="30c3" class="tk">boolean_T</a> <a id="30c13" class="tk">eventFlags</a>[5];</td></tr>
 <tr name="31" id="31">
 <td><a id="l31" class='ln'>31</a></td><td>  <a id="31c3" class="tk">int_T</a> <a id="31c9" class="tk">i</a>;</td></tr>
 <tr name="32" id="32">
@@ -119,7 +119,7 @@
 <tr name="54" id="54">
 <td><a id="l54" class='ln'>54</a></td><td>  <a id="54c3" class="tk">isRateRunning</a>[0]<a id="54c19" class="tk">--</a>;</td></tr>
 <tr name="55" id="55">
-<td><a id="l55" class='ln'>55</a></td><td>  <span class="kw">for</span> (<a id="55c8" class="tk">i</a> = 1; <a id="55c15" class="tk">i</a> <a id="55c17" class="tk">&lt;</a> 3; <a id="55c22" class="tk">i</a><a id="55c23" class="tk">++</a>) <span class="br">{</span></td></tr>
+<td><a id="l55" class='ln'>55</a></td><td>  <span class="kw">for</span> (<a id="55c8" class="tk">i</a> = 1; <a id="55c15" class="tk">i</a> <a id="55c17" class="tk">&lt;</a> 5; <a id="55c22" class="tk">i</a><a id="55c23" class="tk">++</a>) <span class="br">{</span></td></tr>
 <tr name="56" id="56">
 <td><a id="l56" class='ln'>56</a></td><td>    <span class="kw">if</span> (<a id="56c9" class="tk">eventFlags</a>[<a id="56c20" class="tk">i</a>]) <span class="br">{</span></td></tr>
 <tr name="57" id="57">
@@ -139,7 +139,7 @@
 <tr name="64" id="64">
 <td><a id="l64" class='ln'>64</a></td><td></td></tr>
 <tr name="65" id="65">
-<td><a id="l65" class='ln'>65</a></td><td>  <span class="kw">for</span> (<a id="65c8" class="tk">i</a> = 1; <a id="65c15" class="tk">i</a> <a id="65c17" class="tk">&lt;</a> 3; <a id="65c22" class="tk">i</a><a id="65c23" class="tk">++</a>) <span class="br">{</span></td></tr>
+<td><a id="l65" class='ln'>65</a></td><td>  <span class="kw">for</span> (<a id="65c8" class="tk">i</a> = 1; <a id="65c15" class="tk">i</a> <a id="65c17" class="tk">&lt;</a> 5; <a id="65c22" class="tk">i</a><a id="65c23" class="tk">++</a>) <span class="br">{</span></td></tr>
 <tr name="66" id="66">
 <td><a id="l66" class='ln'>66</a></td><td>    <span class="kw">if</span> (<a id="66c9" class="tk">isRateRunning</a>[<a id="66c23" class="tk">i</a>]) <span class="br">{</span></td></tr>
 <tr name="67" id="67">
@@ -189,91 +189,115 @@
 <tr name="89" id="89">
 <td><a id="l89" class='ln'>89</a></td><td></td></tr>
 <tr name="90" id="90">
-<td><a id="l90" class='ln'>90</a></td><td>       <span class="kw">default</span> <a id="90c16" class="tk">:</a></td></tr>
+<td><a id="l90" class='ln'>90</a></td><td>       <span class="kw">case</span> 3 <a id="90c15" class="tk">:</a></td></tr>
 <tr name="91" id="91">
-<td><a id="l91" class='ln'>91</a></td><td>        <span class="kw">break</span>;</td></tr>
+<td><a id="l91" class='ln'>91</a></td><td>        <a id="91c9" class="tk">Feedback_3_step3</a>();</td></tr>
 <tr name="92" id="92">
-<td><a id="l92" class='ln'>92</a></td><td>      <span class="br">}</span></td></tr>
+<td><a id="l92" class='ln'>92</a></td><td></td></tr>
 <tr name="93" id="93">
-<td><a id="l93" class='ln'>93</a></td><td></td></tr>
+<td><a id="l93" class='ln'>93</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
 <tr name="94" id="94">
-<td><a id="l94" class='ln'>94</a></td><td>      <a id="94c7" class="tk">systick_intr_disable</a>();</td></tr>
+<td><a id="l94" class='ln'>94</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="95" id="95">
-<td><a id="l95" class='ln'>95</a></td><td>      <a id="95c7" class="tk">need2runFlags</a>[<a id="95c21" class="tk">i</a>]<a id="95c23" class="tk">--</a>;</td></tr>
+<td><a id="l95" class='ln'>95</a></td><td></td></tr>
 <tr name="96" id="96">
-<td><a id="l96" class='ln'>96</a></td><td>      <a id="96c7" class="tk">isRateRunning</a>[<a id="96c21" class="tk">i</a>]<a id="96c23" class="tk">--</a>;</td></tr>
+<td><a id="l96" class='ln'>96</a></td><td>       <span class="kw">case</span> 4 <a id="96c15" class="tk">:</a></td></tr>
 <tr name="97" id="97">
-<td><a id="l97" class='ln'>97</a></td><td>    <span class="br">}</span></td></tr>
+<td><a id="l97" class='ln'>97</a></td><td>        <a id="97c9" class="tk">Feedback_3_step4</a>();</td></tr>
 <tr name="98" id="98">
-<td><a id="l98" class='ln'>98</a></td><td>  <span class="br">}</span></td></tr>
+<td><a id="l98" class='ln'>98</a></td><td></td></tr>
 <tr name="99" id="99">
-<td><a id="l99" class='ln'>99</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l99" class='ln'>99</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
 <tr name="100" id="100">
-<td><a id="l100" class='ln'>100</a></td><td></td></tr>
+<td><a id="l100" class='ln'>100</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="101" id="101">
-<td><a id="l101" class='ln'>101</a></td><td><span class="kw">volatile</span> <a id="101c10" class="tk">boolean_T</a> <a id="101c20" class="tk">stopRequested</a> = false;</td></tr>
+<td><a id="l101" class='ln'>101</a></td><td></td></tr>
 <tr name="102" id="102">
-<td><a id="l102" class='ln'>102</a></td><td><span class="kw">int</span> <a id="102c5" class="tk">main</a>(<span class="kw">int</span> <a id="102c14" class="tk">argc</a>, <span class="kw">char</span> <a id="102c25" class="tk">*</a><a id="102c26" class="tk">*</a><a id="102c27" class="tk">argv</a>)</td></tr>
+<td><a id="l102" class='ln'>102</a></td><td>       <span class="kw">default</span> <a id="102c16" class="tk">:</a></td></tr>
 <tr name="103" id="103">
-<td><a id="l103" class='ln'>103</a></td><td><span class="br">{</span></td></tr>
+<td><a id="l103" class='ln'>103</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="104" id="104">
-<td><a id="l104" class='ln'>104</a></td><td>  <span class="kw">volatile</span> <a id="104c12" class="tk">boolean_T</a> <a id="104c22" class="tk">runModel</a> = true;</td></tr>
+<td><a id="l104" class='ln'>104</a></td><td>      <span class="br">}</span></td></tr>
 <tr name="105" id="105">
-<td><a id="l105" class='ln'>105</a></td><td>  <span class="kw">float</span> <a id="105c9" class="tk">modelBaseRate</a> = 0.0001;</td></tr>
+<td><a id="l105" class='ln'>105</a></td><td></td></tr>
 <tr name="106" id="106">
-<td><a id="l106" class='ln'>106</a></td><td>  <span class="kw">float</span> <a id="106c9" class="tk">systemClock</a> = 100;</td></tr>
+<td><a id="l106" class='ln'>106</a></td><td>      <a id="106c7" class="tk">systick_intr_disable</a>();</td></tr>
 <tr name="107" id="107">
-<td><a id="l107" class='ln'>107</a></td><td>  <a id="107c3" class="tk">system_init</a>();</td></tr>
+<td><a id="l107" class='ln'>107</a></td><td>      <a id="107c7" class="tk">need2runFlags</a>[<a id="107c21" class="tk">i</a>]<a id="107c23" class="tk">--</a>;</td></tr>
 <tr name="108" id="108">
-<td><a id="l108" class='ln'>108</a></td><td>  <a id="108c3" class="tk">rtmSetErrorStatus</a>(<a id="108c21" class="tk">Feedback_3_M</a>, 0);</td></tr>
+<td><a id="l108" class='ln'>108</a></td><td>      <a id="108c7" class="tk">isRateRunning</a>[<a id="108c21" class="tk">i</a>]<a id="108c23" class="tk">--</a>;</td></tr>
 <tr name="109" id="109">
-<td><a id="l109" class='ln'>109</a></td><td>  <a id="109c3" class="tk">Feedback_3_initialize</a>();</td></tr>
+<td><a id="l109" class='ln'>109</a></td><td>    <span class="br">}</span></td></tr>
 <tr name="110" id="110">
-<td><a id="l110" class='ln'>110</a></td><td>  <a id="110c3" class="tk">systick_init</a>(<a id="110c16" class="tk">modelBaseRate</a>);</td></tr>
+<td><a id="l110" class='ln'>110</a></td><td>  <span class="br">}</span></td></tr>
 <tr name="111" id="111">
-<td><a id="l111" class='ln'>111</a></td><td>  <a id="111c3" class="tk">runModel</a> =</td></tr>
+<td><a id="l111" class='ln'>111</a></td><td><span class="br">}</span></td></tr>
 <tr name="112" id="112">
-<td><a id="l112" class='ln'>112</a></td><td>    <a id="112c5" class="tk">rtmGetErrorStatus</a>(<a id="112c23" class="tk">Feedback_3_M</a>) <a id="112c37" class="tk">==</a> (<a id="112c41" class="tk">NULL</a>);</td></tr>
+<td><a id="l112" class='ln'>112</a></td><td></td></tr>
 <tr name="113" id="113">
-<td><a id="l113" class='ln'>113</a></td><td>  <a id="113c3" class="tk">systick_intr_enable</a>();</td></tr>
+<td><a id="l113" class='ln'>113</a></td><td><span class="kw">volatile</span> <a id="113c10" class="tk">boolean_T</a> <a id="113c20" class="tk">stopRequested</a> = false;</td></tr>
 <tr name="114" id="114">
-<td><a id="l114" class='ln'>114</a></td><td>  <span class="kw">while</span> (<a id="114c10" class="tk">runModel</a>) <span class="br">{</span></td></tr>
+<td><a id="l114" class='ln'>114</a></td><td><span class="kw">int</span> <a id="114c5" class="tk">main</a>(<span class="kw">int</span> <a id="114c14" class="tk">argc</a>, <span class="kw">char</span> <a id="114c25" class="tk">*</a><a id="114c26" class="tk">*</a><a id="114c27" class="tk">argv</a>)</td></tr>
 <tr name="115" id="115">
-<td><a id="l115" class='ln'>115</a></td><td>    <a id="115c5" class="tk">stopRequested</a> = <a id="115c21" class="tk">!</a>(</td></tr>
+<td><a id="l115" class='ln'>115</a></td><td><span class="br">{</span></td></tr>
 <tr name="116" id="116">
-<td><a id="l116" class='ln'>116</a></td><td>                      <a id="116c23" class="tk">rtmGetErrorStatus</a>(<a id="116c41" class="tk">Feedback_3_M</a>) <a id="116c55" class="tk">==</a> (<a id="116c59" class="tk">NULL</a>));</td></tr>
+<td><a id="l116" class='ln'>116</a></td><td>  <span class="kw">volatile</span> <a id="116c12" class="tk">boolean_T</a> <a id="116c22" class="tk">runModel</a> = true;</td></tr>
 <tr name="117" id="117">
-<td><a id="l117" class='ln'>117</a></td><td>    <a id="117c5" class="tk">runModel</a> = <a id="117c16" class="tk">!</a>(<a id="117c18" class="tk">stopRequested</a>);</td></tr>
+<td><a id="l117" class='ln'>117</a></td><td>  <span class="kw">float</span> <a id="117c9" class="tk">modelBaseRate</a> = 1.0E-5;</td></tr>
 <tr name="118" id="118">
-<td><a id="l118" class='ln'>118</a></td><td>  <span class="br">}</span></td></tr>
+<td><a id="l118" class='ln'>118</a></td><td>  <span class="kw">float</span> <a id="118c9" class="tk">systemClock</a> = 100;</td></tr>
 <tr name="119" id="119">
-<td><a id="l119" class='ln'>119</a></td><td></td></tr>
+<td><a id="l119" class='ln'>119</a></td><td>  <a id="119c3" class="tk">system_init</a>();</td></tr>
 <tr name="120" id="120">
-<td><a id="l120" class='ln'>120</a></td><td>  <span class="ct">/* Disable rt_OneStep() here */</span></td></tr>
+<td><a id="l120" class='ln'>120</a></td><td>  <a id="120c3" class="tk">rtmSetErrorStatus</a>(<a id="120c21" class="tk">Feedback_3_M</a>, 0);</td></tr>
 <tr name="121" id="121">
-<td><a id="l121" class='ln'>121</a></td><td></td></tr>
+<td><a id="l121" class='ln'>121</a></td><td>  <a id="121c3" class="tk">Feedback_3_initialize</a>();</td></tr>
 <tr name="122" id="122">
-<td><a id="l122" class='ln'>122</a></td><td>  <span class="ct">/* Terminate model */</span></td></tr>
+<td><a id="l122" class='ln'>122</a></td><td>  <a id="122c3" class="tk">systick_init</a>(<a id="122c16" class="tk">modelBaseRate</a>);</td></tr>
 <tr name="123" id="123">
-<td><a id="l123" class='ln'>123</a></td><td>  <a id="123c3" class="tk">Feedback_3_terminate</a>();</td></tr>
+<td><a id="l123" class='ln'>123</a></td><td>  <a id="123c3" class="tk">runModel</a> =</td></tr>
 <tr name="124" id="124">
-<td><a id="l124" class='ln'>124</a></td><td>  <span class="kw">return</span> 0;</td></tr>
+<td><a id="l124" class='ln'>124</a></td><td>    <a id="124c5" class="tk">rtmGetErrorStatus</a>(<a id="124c23" class="tk">Feedback_3_M</a>) <a id="124c37" class="tk">==</a> (<a id="124c41" class="tk">NULL</a>);</td></tr>
 <tr name="125" id="125">
-<td><a id="l125" class='ln'>125</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l125" class='ln'>125</a></td><td>  <a id="125c3" class="tk">systick_intr_enable</a>();</td></tr>
 <tr name="126" id="126">
-<td><a id="l126" class='ln'>126</a></td><td></td></tr>
+<td><a id="l126" class='ln'>126</a></td><td>  <span class="kw">while</span> (<a id="126c10" class="tk">runModel</a>) <span class="br">{</span></td></tr>
 <tr name="127" id="127">
-<td><a id="l127" class='ln'>127</a></td><td><span class="ct">/*</span></td></tr>
+<td><a id="l127" class='ln'>127</a></td><td>    <a id="127c5" class="tk">stopRequested</a> = <a id="127c21" class="tk">!</a>(</td></tr>
 <tr name="128" id="128">
-<td><a id="l128" class='ln'>128</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<td><a id="l128" class='ln'>128</a></td><td>                      <a id="128c23" class="tk">rtmGetErrorStatus</a>(<a id="128c41" class="tk">Feedback_3_M</a>) <a id="128c55" class="tk">==</a> (<a id="128c59" class="tk">NULL</a>));</td></tr>
 <tr name="129" id="129">
-<td><a id="l129" class='ln'>129</a></td><td><span class="ct"> *</span></td></tr>
+<td><a id="l129" class='ln'>129</a></td><td>    <a id="129c5" class="tk">runModel</a> = <a id="129c16" class="tk">!</a>(<a id="129c18" class="tk">stopRequested</a>);</td></tr>
 <tr name="130" id="130">
-<td><a id="l130" class='ln'>130</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<td><a id="l130" class='ln'>130</a></td><td>  <span class="br">}</span></td></tr>
 <tr name="131" id="131">
-<td><a id="l131" class='ln'>131</a></td><td><span class="ct"> */</span></td></tr>
+<td><a id="l131" class='ln'>131</a></td><td></td></tr>
 <tr name="132" id="132">
-<td><a id="l132" class='ln'>132</a></td><td></td></tr>
+<td><a id="l132" class='ln'>132</a></td><td>  <span class="ct">/* Disable rt_OneStep() here */</span></td></tr>
+<tr name="133" id="133">
+<td><a id="l133" class='ln'>133</a></td><td></td></tr>
+<tr name="134" id="134">
+<td><a id="l134" class='ln'>134</a></td><td>  <span class="ct">/* Terminate model */</span></td></tr>
+<tr name="135" id="135">
+<td><a id="l135" class='ln'>135</a></td><td>  <a id="135c3" class="tk">Feedback_3_terminate</a>();</td></tr>
+<tr name="136" id="136">
+<td><a id="l136" class='ln'>136</a></td><td>  <span class="kw">return</span> 0;</td></tr>
+<tr name="137" id="137">
+<td><a id="l137" class='ln'>137</a></td><td><span class="br">}</span></td></tr>
+<tr name="138" id="138">
+<td><a id="l138" class='ln'>138</a></td><td></td></tr>
+<tr name="139" id="139">
+<td><a id="l139" class='ln'>139</a></td><td><span class="ct">/*</span></td></tr>
+<tr name="140" id="140">
+<td><a id="l140" class='ln'>140</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<tr name="141" id="141">
+<td><a id="l141" class='ln'>141</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="142" id="142">
+<td><a id="l142" class='ln'>142</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<tr name="143" id="143">
+<td><a id="l143" class='ln'>143</a></td><td><span class="ct"> */</span></td></tr>
+<tr name="144" id="144">
+<td><a id="l144" class='ln'>144</a></td><td></td></tr>
 </table>
 </pre>
 </body>

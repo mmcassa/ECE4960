@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'Feedback_3'.
  *
- * Model version                  : 1.41
+ * Model version                  : 1.117
  * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017
- * C/C++ source code generated on : Tue Oct 15 19:40:34 2019
+ * C/C++ source code generated on : Thu Oct 31 18:58:25 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,13 +21,13 @@
 #include "rtwtypes.h"
 
 volatile int IsrOverrun = 0;
-boolean_T isRateRunning[3] = { 0, 0, 0 };
+boolean_T isRateRunning[5] = { 0, 0, 0, 0, 0 };
 
-boolean_T need2runFlags[3] = { 0, 0, 0 };
+boolean_T need2runFlags[5] = { 0, 0, 0, 0, 0 };
 
 void rt_OneStep(void)
 {
-  boolean_T eventFlags[3];
+  boolean_T eventFlags[5];
   int_T i;
 
   /* Check base rate for overrun */
@@ -52,7 +52,7 @@ void rt_OneStep(void)
   /* Get model outputs here */
   systick_intr_disable();
   isRateRunning[0]--;
-  for (i = 1; i < 3; i++) {
+  for (i = 1; i < 5; i++) {
     if (eventFlags[i]) {
       if (need2runFlags[i]++) {
         IsrOverrun = 1;
@@ -62,7 +62,7 @@ void rt_OneStep(void)
     }
   }
 
-  for (i = 1; i < 3; i++) {
+  for (i = 1; i < 5; i++) {
     if (isRateRunning[i]) {
       /* Yield to higher priority*/
       return;
@@ -87,6 +87,18 @@ void rt_OneStep(void)
         /* Get model outputs here */
         break;
 
+       case 3 :
+        Feedback_3_step3();
+
+        /* Get model outputs here */
+        break;
+
+       case 4 :
+        Feedback_3_step4();
+
+        /* Get model outputs here */
+        break;
+
        default :
         break;
       }
@@ -102,7 +114,7 @@ volatile boolean_T stopRequested = false;
 int main(int argc, char **argv)
 {
   volatile boolean_T runModel = true;
-  float modelBaseRate = 0.0001;
+  float modelBaseRate = 1.0E-5;
   float systemClock = 100;
   system_init();
   rtmSetErrorStatus(Feedback_3_M, 0);

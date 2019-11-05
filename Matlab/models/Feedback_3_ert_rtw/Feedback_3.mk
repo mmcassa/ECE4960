@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'Feedback_3'. 
 ## 
 ## Makefile     : Feedback_3.mk
-## Generated on : Tue Oct 15 19:23:18 2019
+## Generated on : Thu Oct 31 18:58:44 2019
 ## MATLAB Coder version: 3.4 (R2017b)
 ## 
 ## Build Info:
@@ -29,7 +29,7 @@ MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2017b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2017b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/Users/MITCHE~1/DOWNLO~1/TIVA_T~1/TIVA_T~1/models
+START_DIR                 = C:/Users/MITCHE~1/DOCUME~1/GitHub/ECE4960/Matlab/models
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 
@@ -138,9 +138,9 @@ ECHO                = @echo
 MV                  = @move
 RUN                 =
 
-#----------------------------------------
-# "Faster Builds" Build Configuration
-#----------------------------------------
+#--------------------------------------
+# "Faster Runs" Build Configuration
+#--------------------------------------
 
 ARFLAGS              = -r
 ASFLAGS              = --compile_only \
@@ -158,7 +158,8 @@ ASFLAGS              = --compile_only \
                        -I"$(SUPPORT_PKG_DIR)/src" \
                        -I"$(SUPPORT_PKG_DIR)/blocks/stellaris_lp_lct" \
                        -I"$(STELLARISWARE_DIR)" \
-                       -I"$(TI_INCLUDE)"
+                       -I"$(TI_INCLUDE)" \
+                       -O2
 OBJCOPYFLAGS_HEX     =  "$<" "$@" "$(TI_TOOLS)/armofd" "$(TI_TOOLS)/armhex" "$(SUPPORT_PKG_DIR)/utils/tiobj2bin/mkhex4bin" 
 CFLAGS               = --compile_only \
                        -mv7M4 \
@@ -174,7 +175,8 @@ CFLAGS               = --compile_only \
                        -I"$(SUPPORT_PKG_DIR)/src" \
                        -I"$(SUPPORT_PKG_DIR)/blocks/stellaris_lp_lct" \
                        -I"$(STELLARISWARE_DIR)" \
-                       -I"$(TI_INCLUDE)"
+                       -I"$(TI_INCLUDE)" \
+                       -O2
 CPPFLAGS             = --compile_only \
                        -mv7M4 \
                        --code_state=16 \
@@ -189,7 +191,8 @@ CPPFLAGS             = --compile_only \
                        -I"$(SUPPORT_PKG_DIR)/src" \
                        -I"$(SUPPORT_PKG_DIR)/blocks/stellaris_lp_lct" \
                        -I"$(STELLARISWARE_DIR)" \
-                       -I"$(TI_INCLUDE)"
+                       -I"$(TI_INCLUDE)" \
+                       -O2
 CPP_LDFLAGS          = -I$(TI_LIB) \
                        --stack_size=4096 \
                        --heap_size=4096 \
@@ -256,7 +259,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I$(MATLAB_ROOT)/simulink/include/sf_runtime -I$(START_DIR)/Feedback_3_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I$(MATLAB_ROOT)/simulink/include/sf_runtime -I$(START_DIR)/Feedback_3_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -I$(MATLAB_ROOT)/simulink/include/messages
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -264,11 +267,11 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -DMODEL=Feedback_3 -DNUMST=3 -DNCSTATES=0 -DHAVESTDIO -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=1 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT
+DEFINES_ = -DMODEL=Feedback_3 -DNUMST=5 -DNCSTATES=0 -DHAVESTDIO -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=1 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT
 DEFINES_BUILD_ARGS = -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=1 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0
 DEFINES_IMPLIED = -DTID01EQ=0
 DEFINES_SKIPFORSIL = -DSTACK_SIZE=64 -DRT
-DEFINES_STANDARD = -DMODEL=Feedback_3 -DNUMST=3 -DNCSTATES=0 -DHAVESTDIO
+DEFINES_STANDARD = -DMODEL=Feedback_3 -DNUMST=5 -DNCSTATES=0 -DHAVESTDIO
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
 
@@ -440,6 +443,22 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 
 
 %.obj : $(RELATIVE_PATH_TO_ANCHOR)/%.cpp
+	$(CPP) $(CPPFLAGS) --output_file=$@ $<
+
+
+%.obj : $(MATLAB_ROOT)/toolbox/rtw/targets/xpc/target/build/xpcblocks/%.cla
+	$(CC) $(CFLAGS) --output_file=$@ $<
+
+
+%.obj : $(MATLAB_ROOT)/toolbox/rtw/targets/xpc/target/build/xpcblocks/%.c
+	$(CC) $(CFLAGS) --output_file=$@ $<
+
+
+%.obj : $(MATLAB_ROOT)/toolbox/rtw/targets/xpc/target/build/xpcblocks/%.asm
+	$(AS) $(ASFLAGS) --output_file=$@ $<
+
+
+%.obj : $(MATLAB_ROOT)/toolbox/rtw/targets/xpc/target/build/xpcblocks/%.cpp
 	$(CPP) $(CPPFLAGS) --output_file=$@ $<
 
 

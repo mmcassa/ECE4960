@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private static byte lower = 0x31;
     private static byte raise = 0x32;
 
+    private int latchHeight = -1;
     // Height References
-    private int heightRef = 0;
+    private int heightRef = 9;
     private int range = 5;
 
     // Bluetooth universals
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         latchButton = findViewById(R.id.latchButton);
 
         // Set default height to latched
-        hover.setText("0.0");
+        hover.setText("0.9");
         upButton.setClickable(false);
         downButton.setClickable(false);
         latchButton.setClickable(false);
@@ -90,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setBtOutput(View view,byte change) {
         try {
-            btOutput.write(change);
-            btOutput.write(0x30);
+            btSocket.getOutputStream().write(change);
+            btSocket.getOutputStream().write(0x30);
         } catch (IOException e) {
             Toast.makeText(getApplicationContext(),"Last message not sent",Toast.LENGTH_SHORT).show();
         }
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         double hovF = Double.valueOf(hover.getText().toString());
 
-        if (hovF <= 1.1) {
+        if (hovF <= 120) {
             setBtOutput(view,lower);
             heightRef += 1;
             hovF += .1;
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     public void hoverUp(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         double hovF = Double.valueOf(hover.getText().toString());
-        if (hovF > 0) {
+        if (hovF > -25) {
             setBtOutput(view,raise);
             hovF -= .1;
             heightRef -= 1;
@@ -130,9 +131,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void latchPlate(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
-        setBtOutput(view,latch);
-        heightRef = 0;
-        hover.setText("0.0");
+        if (latchHeight < 0) {
+            setBtOutput(view, latch);
+            heightRef = 0;
+            latchHeight = heightRef;
+            hover.setText("9.9");
+        } else {
+            setBtOutput(view, latch);
+            heightRef = latchHeight;
+            latchHeight = -1;
+            hover.setText(Float.toString(heightRef));
+        }
     }
 
     public void checkConnection(View view) {

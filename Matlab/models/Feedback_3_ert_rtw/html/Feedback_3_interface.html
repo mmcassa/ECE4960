@@ -144,7 +144,7 @@ Output entry point of generated code
 Timing
 </td>
 <td width="75%" align="left" valign="top">
-Must be called periodically, every 0.0001 seconds
+Must be called periodically, every 1e-05 seconds
 </td>
 
 </tr>
@@ -207,7 +207,7 @@ Output entry point of generated code
 Timing
 </td>
 <td width="75%" align="left" valign="top">
-Must be called periodically, every 0.1 seconds
+Must be called periodically, every 0.0001 seconds
 </td>
 
 </tr>
@@ -270,7 +270,133 @@ Output entry point of generated code
 Timing
 </td>
 <td width="75%" align="left" valign="top">
-Must be called periodically, every 0.2 seconds
+Must be called periodically, every 0.001 seconds
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="Feedback_3_h.html">Feedback_3.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="Feedback_3_c.html#fcn_Feedback_3_step3">Feedback_3_step3</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void Feedback_3_step3(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Output entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called periodically, every 0.01 seconds
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="Feedback_3_h.html">Feedback_3.h</a>
+</td>
+
+</tr>
+
+</table>
+<p>
+Function: <a href="Feedback_3_c.html#fcn_Feedback_3_step4">Feedback_3_step4</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void Feedback_3_step4(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Output entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called periodically, every 0.02 seconds
 </td>
 
 </tr>
@@ -381,20 +507,11 @@ Outports
 </a>
 
 </h3>
-<p>
-No Outports in model.
-</p>
-<h3>
-<a name="sec_Interface_Parameters">
-Interface Parameters
-</a>
-
-</h3>
 <span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
 <tr class="heading">
 <th width="42%" align="left" valign="top">
 <b>
-Parameter Source
+Block Name
 </b>
 
 </th>
@@ -420,10 +537,10 @@ Dimension
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:109')" name="code2model" class="code2model">&lt;Root&gt;/Constant1</a>
+<a href="matlab:coder.internal.code2model('Feedback_3:214')" name="code2model" class="code2model">&lt;Root&gt;/Out1</a>
 </td>
 <td width="26%" align="left" valign="top">
-Feedback_3_P.Constant1_Value
+Feedback_3_Y.Out1
 </td>
 <td width="21%" align="left" valign="top">
 real_T
@@ -435,10 +552,10 @@ real_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:110')" name="code2model" class="code2model">&lt;Root&gt;/Constant2</a>
+<a href="matlab:coder.internal.code2model('Feedback_3:308')" name="code2model" class="code2model">&lt;Root&gt;/Out2</a>
 </td>
 <td width="26%" align="left" valign="top">
-Feedback_3_P.Constant2_Value
+Feedback_3_Y.Out2
 </td>
 <td width="21%" align="left" valign="top">
 real_T
@@ -450,690 +567,1884 @@ real_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:309')" name="code2model" class="code2model">&lt;Root&gt;/Out3</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out3
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:310')" name="code2model" class="code2model">&lt;Root&gt;/Out4</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out4
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:311')" name="code2model" class="code2model">&lt;Root&gt;/Out5</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out5
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:312')" name="code2model" class="code2model">&lt;Root&gt;/Out6</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out6
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:364')" name="code2model" class="code2model">&lt;Root&gt;/Out7</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out7
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:365')" name="code2model" class="code2model">&lt;Root&gt;/Out8</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out8
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:366')" name="code2model" class="code2model">&lt;Root&gt;/Out9</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out9
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1702')" name="code2model" class="code2model">&lt;Root&gt;/Out10</a>
+</td>
+<td width="26%" align="left" valign="top">
+Feedback_3_Y.Out10
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+
+</table>
+<h3>
+<a name="sec_Interface_Parameters">
+Interface Parameters
+</a>
+
+</h3>
+<span title="Click to shrink or expand table" onclick="rtwTableShrink(this)">[-]</span><table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="38%" align="left" valign="top">
+<b>
+Parameter Source
+</b>
+
+</th>
+<th width="23%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="19%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="9%" align="left" valign="top">
+<b>
+Scaling
+</b>
+
+</th>
+<th width="9%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1861')" name="code2model" class="code2model">&lt;S10&gt;/Current Offset</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.CurrentOffset_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1862')" name="code2model" class="code2model">&lt;S10&gt;/DC//I Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DCIGain_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1872')" name="code2model" class="code2model">&lt;S10&gt;/Temperature  Normalization</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.TemperatureNormalization_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1863')" name="code2model" class="code2model">&lt;S10&gt;/Duty Cycle Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DutyCycleSaturation_UpperSat
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1863')" name="code2model" class="code2model">&lt;S10&gt;/Duty Cycle Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DutyCycleSaturation_LowerSat
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:229')" name="code2model" class="code2model">&lt;Root&gt;/Constant5</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant5_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1837')" name="code2model" class="code2model">&lt;S9&gt;/Current Offset</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.CurrentOffset_Value_o
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1838')" name="code2model" class="code2model">&lt;S9&gt;/DC//I Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DCIGain_Gain_k
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1848')" name="code2model" class="code2model">&lt;S9&gt;/Temperature  Normalization</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.TemperatureNormalization_Gain_h
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1839')" name="code2model" class="code2model">&lt;S9&gt;/Duty Cycle Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DutyCycleSaturation_UpperSat_a
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1839')" name="code2model" class="code2model">&lt;S9&gt;/Duty Cycle Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DutyCycleSaturation_LowerSat_n
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:226')" name="code2model" class="code2model">&lt;Root&gt;/Constant4</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant4_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1763')" name="code2model" class="code2model">&lt;S8&gt;/Current Offset</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.CurrentOffset_Value_p
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1764')" name="code2model" class="code2model">&lt;S8&gt;/DC//I Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DCIGain_Gain_i
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1774')" name="code2model" class="code2model">&lt;S8&gt;/Temperature  Normalization</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.TemperatureNormalization_Gain_p
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1765')" name="code2model" class="code2model">&lt;S8&gt;/Duty Cycle Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DutyCycleSaturation_UpperSat_f
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1765')" name="code2model" class="code2model">&lt;S8&gt;/Duty Cycle Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DutyCycleSaturation_LowerSat_c
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:224')" name="code2model" class="code2model">&lt;Root&gt;/Constant3</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant3_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:108')" name="code2model" class="code2model">&lt;Root&gt;/Constant</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.Constant_Value
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:161')" name="code2model" class="code2model">&lt;S5&gt;/Constant</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1732')" name="code2model" class="code2model">&lt;S5&gt;/Constant</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Constant_Value_f
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant_Value_k
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:165')" name="code2model" class="code2model">&lt;S5&gt;/Polynomial</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1733')" name="code2model" class="code2model">&lt;S5&gt;/Constant1</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Polynomial_Coefs
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant1_Value
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
-[1  3]
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:174')" name="code2model" class="code2model">&lt;S5&gt;/Constant1</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1735')" name="code2model" class="code2model">&lt;S5&gt;/Saturation</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Constant1_Value_c
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Saturation_UpperSat
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:163')" name="code2model" class="code2model">&lt;S5&gt;/Gain</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1735')" name="code2model" class="code2model">&lt;S5&gt;/Saturation</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Gain_Gain
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Saturation_LowerSat
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:162')" name="code2model" class="code2model">&lt;S5&gt;/Discrete Transfer Fcn</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1840')" name="code2model" class="code2model">&lt;S9&gt;/Gain1</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain1_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:110')" name="code2model" class="code2model">&lt;Root&gt;/Constant2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant2_Value
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1841')" name="code2model" class="code2model">&lt;S9&gt;/Gain2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain2_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:109')" name="code2model" class="code2model">&lt;Root&gt;/Constant1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant1_Value_j
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1836')" name="code2model" class="code2model">&lt;S9&gt;/Contoller Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ContollerGain_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1843:2')" name="code2model" class="code2model">&lt;S16&gt;/Discrete Transfer Fcn</a>
+</td>
+<td width="23%" align="left" valign="top">
 Feedback_3_P.DiscreteTransferFcn_NumCoef
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 [1  2]
 </td>
 
 </tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:162')" name="code2model" class="code2model">&lt;S5&gt;/Discrete Transfer Fcn</a>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1843:2')" name="code2model" class="code2model">&lt;S16&gt;/Discrete Transfer Fcn</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.DiscreteTransferFcn_DenCoef
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 [1  2]
 </td>
 
 </tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:162')" name="code2model" class="code2model">&lt;S5&gt;/Discrete Transfer Fcn</a>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1843:2')" name="code2model" class="code2model">&lt;S16&gt;/Discrete Transfer Fcn</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.DiscreteTransferFcn_InitialStat
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
-1
+<td width="9%" align="left" valign="top">
+&#160;
 </td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:180')" name="code2model" class="code2model">&lt;S6&gt;/Constant</a>
-</td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Constant_Value_o
-</td>
-<td width="21%" align="left" valign="top">
-real_T
-</td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:186')" name="code2model" class="code2model">&lt;S6&gt;/Polynomial</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1842')" name="code2model" class="code2model">&lt;S9&gt;/Gain3</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Polynomial_Coefs_c
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain3_Gain
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
-[1  3]
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:181')" name="code2model" class="code2model">&lt;S6&gt;/Constant1</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1740')" name="code2model" class="code2model">&lt;S6&gt;/Constant</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Constant1_Value_a
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant_Value_i
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:184')" name="code2model" class="code2model">&lt;S6&gt;/Gain</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1741')" name="code2model" class="code2model">&lt;S6&gt;/Constant1</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Gain_Gain_l
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant1_Value_p
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:182')" name="code2model" class="code2model">&lt;S6&gt;/Discrete Transfer Fcn</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1743')" name="code2model" class="code2model">&lt;S6&gt;/Saturation</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DiscreteTransferFcn_NumCoef_l
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Saturation_UpperSat_n
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1743')" name="code2model" class="code2model">&lt;S6&gt;/Saturation</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Saturation_LowerSat_c
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1864')" name="code2model" class="code2model">&lt;S10&gt;/Gain1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain1_Gain_l
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1865')" name="code2model" class="code2model">&lt;S10&gt;/Gain2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain2_Gain_e
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1860')" name="code2model" class="code2model">&lt;S10&gt;/Contoller Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ContollerGain_Gain_m
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1867:2')" name="code2model" class="code2model">&lt;S18&gt;/Discrete Transfer Fcn</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DiscreteTransferFcn_NumCoef_p
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+[1  2]
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1867:2')" name="code2model" class="code2model">&lt;S18&gt;/Discrete Transfer Fcn</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DiscreteTransferFcn_DenCoef_e
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 [1  2]
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:182')" name="code2model" class="code2model">&lt;S6&gt;/Discrete Transfer Fcn</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1867:2')" name="code2model" class="code2model">&lt;S18&gt;/Discrete Transfer Fcn</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DiscreteTransferFcn_DenCoef_n
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DiscreteTransferFcn_InitialSt_f
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
-[1  2]
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:182')" name="code2model" class="code2model">&lt;S6&gt;/Discrete Transfer Fcn</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1866')" name="code2model" class="code2model">&lt;S10&gt;/Gain3</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DiscreteTransferFcn_InitialSt_l
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain3_Gain_o
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:199')" name="code2model" class="code2model">&lt;S7&gt;/Constant</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1708')" name="code2model" class="code2model">&lt;S4&gt;/Constant</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.Constant_Value_b
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:205')" name="code2model" class="code2model">&lt;S7&gt;/Polynomial</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1730')" name="code2model" class="code2model">&lt;S4&gt;/Constant1</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Polynomial_Coefs_cy
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant1_Value_i
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
-[1  3]
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:200')" name="code2model" class="code2model">&lt;S7&gt;/Constant1</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1709')" name="code2model" class="code2model">&lt;S4&gt;/Saturation</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Constant1_Value_l
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Saturation_UpperSat_c
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:203')" name="code2model" class="code2model">&lt;S7&gt;/Gain</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1709')" name="code2model" class="code2model">&lt;S4&gt;/Saturation</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.Gain_Gain_c
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Saturation_LowerSat_i
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:201')" name="code2model" class="code2model">&lt;S7&gt;/Discrete Transfer Fcn</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1766')" name="code2model" class="code2model">&lt;S8&gt;/Gain1</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DiscreteTransferFcn_NumCoef_g
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain1_Gain_j
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1767')" name="code2model" class="code2model">&lt;S8&gt;/Gain2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain2_Gain_l
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1762')" name="code2model" class="code2model">&lt;S8&gt;/Contoller Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ContollerGain_Gain_e
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1769:2')" name="code2model" class="code2model">&lt;S14&gt;/Discrete Transfer Fcn</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DiscreteTransferFcn_NumCoef_e
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+[1  2]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1769:2')" name="code2model" class="code2model">&lt;S14&gt;/Discrete Transfer Fcn</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DiscreteTransferFcn_DenCoef_h
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 [1  2]
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:201')" name="code2model" class="code2model">&lt;S7&gt;/Discrete Transfer Fcn</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1769:2')" name="code2model" class="code2model">&lt;S14&gt;/Discrete Transfer Fcn</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DiscreteTransferFcn_DenCoef_f
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DiscreteTransferFcn_InitialSt_b
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
-[1  2]
+<td width="9%" align="left" valign="top">
+&#160;
 </td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:201')" name="code2model" class="code2model">&lt;S7&gt;/Discrete Transfer Fcn</a>
-</td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DiscreteTransferFcn_InitialSt_m
-</td>
-<td width="21%" align="left" valign="top">
-real_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:115')" name="code2model" class="code2model">&lt;S4&gt;/Uniform Random Number</a>
-</td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.UniformRandomNumber_Minimum
-</td>
-<td width="21%" align="left" valign="top">
-real_T
-</td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:115')" name="code2model" class="code2model">&lt;S4&gt;/Uniform Random Number</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1768')" name="code2model" class="code2model">&lt;S8&gt;/Gain3</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.UniformRandomNumber_Maximum
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain3_Gain_b
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:115')" name="code2model" class="code2model">&lt;S4&gt;/Uniform Random Number</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1726')" name="code2model" class="code2model">&lt;Root&gt;/Gain</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.UniformRandomNumber_Seed
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain_Gain
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:53')" name="code2model" class="code2model">&lt;Root&gt;/AD Raw3</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1727')" name="code2model" class="code2model">&lt;Root&gt;/Gain1</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.ADRaw3_p1
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain1_Gain_f
 </td>
-<td width="21%" align="left" valign="top">
-int32_T
+<td width="19%" align="left" valign="top">
+real_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1728')" name="code2model" class="code2model">&lt;Root&gt;/Gain2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain2_Gain_n
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1754')" name="code2model" class="code2model">&lt;Root&gt;/Gain4</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain4_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1755')" name="code2model" class="code2model">&lt;Root&gt;/Gain5</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain5_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1756')" name="code2model" class="code2model">&lt;Root&gt;/Gain6</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain6_Gain
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1747')" name="code2model" class="code2model">&lt;Root&gt;/Gain3</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain3_Gain_n
+</td>
+<td width="19%" align="left" valign="top">
+real_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:52')" name="code2model" class="code2model">&lt;Root&gt;/AD Raw2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.ADRaw2_p1
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
+<tr class="even">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:42')" name="code2model" class="code2model">&lt;Root&gt;/AD Raw1</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.ADRaw1_p1
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:53')" name="code2model" class="code2model">&lt;Root&gt;/AD Raw3</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ADRaw3_p1
+</td>
+<td width="19%" align="left" valign="top">
+int32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:12:151')" name="code2model" class="code2model">&lt;S1&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p1
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:12:151')" name="code2model" class="code2model">&lt;S1&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p3
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:13:151')" name="code2model" class="code2model">&lt;S2&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p1_c
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:13:151')" name="code2model" class="code2model">&lt;S2&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p3_m
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:61:151')" name="code2model" class="code2model">&lt;S3&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p1_d
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:61:151')" name="code2model" class="code2model">&lt;S3&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p3_mx
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 int32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1669')" name="code2model" class="code2model">&lt;S7&gt;/XComInit</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.XComInit_p1
+</td>
+<td width="19%" align="left" valign="top">
+int32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1835:34')" name="code2model" class="code2model">&lt;S15&gt;/AD Raw1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ADRaw1_p1_f
+</td>
+<td width="19%" align="left" valign="top">
+int32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1859:34')" name="code2model" class="code2model">&lt;S17&gt;/AD Raw1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ADRaw1_p1_a
+</td>
+<td width="19%" align="left" valign="top">
+int32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:12:151')" name="code2model" class="code2model">&lt;S1&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p2
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
+<tr class="even">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:13:151')" name="code2model" class="code2model">&lt;S2&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p2_l
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
+<tr class="odd">
+<td width="38%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('Feedback_3:61:151')" name="code2model" class="code2model">&lt;S3&gt;/S-Function2</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.SFunction2_p2_e
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:6')" name="code2model" class="code2model">&lt;S4&gt;/GPIO Write</a>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1660')" name="code2model" class="code2model">&lt;S7&gt;/GPIO Write</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.GPIOWrite_p1
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint32_T
 </td>
-<td width="10%" align="right" valign="top">
-1
+<td width="9%" align="left" valign="top">
+&#160;
 </td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:5')" name="code2model" class="code2model">&lt;S4&gt;/GPIO Setup</a>
-</td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.GPIOSetup_p1
-</td>
-<td width="21%" align="left" valign="top">
-uint32_T
-</td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:5')" name="code2model" class="code2model">&lt;S4&gt;/GPIO Setup</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1659')" name="code2model" class="code2model">&lt;S7&gt;/GPIO Setup</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.GPIOSetup_p2
+<td width="23%" align="left" valign="top">
+Feedback_3_P.GPIOSetup_p1
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint32_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:23')" name="code2model" class="code2model">&lt;Root&gt;/Debug Print</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1659')" name="code2model" class="code2model">&lt;S7&gt;/GPIO Setup</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.DebugPrint_p1
+<td width="23%" align="left" valign="top">
+Feedback_3_P.GPIOSetup_p2
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1742')" name="code2model" class="code2model">&lt;S6&gt;/Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain_Gain_k
+</td>
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 32
+FractionLength: 52
+">ufix32_En52</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1734')" name="code2model" class="code2model">&lt;S5&gt;/Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain_Gain_i
+</td>
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 32
+FractionLength: 53
+">ufix32_En53</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1706')" name="code2model" class="code2model">&lt;S4&gt;/Gain</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Gain_Gain_g
+</td>
+<td width="19%" align="left" valign="top">
+uint32_T
+</td>
+<td width="9%" align="left" valign="top">
+<span title="  DataTypeMode: Fixed-point: binary point scaling
+    Signedness: Unsigned
+    WordLength: 32
+FractionLength: 53
+">ufix32_En53</span>
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1919')" name="code2model" class="code2model">&lt;S7&gt;/Red LED On2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.RedLEDOn2_Value
+</td>
+<td width="19%" align="left" valign="top">
 uint8_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1918')" name="code2model" class="code2model">&lt;S7&gt;/Red LED On1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.RedLEDOn1_Value
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1666')" name="code2model" class="code2model">&lt;S7&gt;/Red LED On</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.RedLEDOn_Value
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1670:150')" name="code2model" class="code2model">&lt;S13&gt;/Out1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Out1_Y0
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1653')" name="code2model" class="code2model">&lt;S7&gt;/Constant</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.Constant_Value_m
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1665')" name="code2model" class="code2model">&lt;S7&gt;/Red LED Off</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.RedLEDOff_Value
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:23')" name="code2model" class="code2model">&lt;Root&gt;/Debug Print</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.DebugPrint_p1
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 [1  35]
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:8')" name="code2model" class="code2model">&lt;S4&gt;/RED LED</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:223')" name="code2model" class="code2model">&lt;Root&gt;/Manual Switch</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ManualSwitch_CurrentSetting
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:231')" name="code2model" class="code2model">&lt;Root&gt;/Manual Switch2</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ManualSwitch2_CurrentSetting
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:228')" name="code2model" class="code2model">&lt;Root&gt;/Manual Switch1</a>
+</td>
+<td width="23%" align="left" valign="top">
+Feedback_3_P.ManualSwitch1_CurrentSetting
+</td>
+<td width="19%" align="left" valign="top">
+uint8_T
+</td>
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1664')" name="code2model" class="code2model">&lt;S7&gt;/RED LED</a>
+</td>
+<td width="23%" align="left" valign="top">
 Feedback_3_P.REDLED_Value
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint8_T
 </td>
-<td width="10%" align="right" valign="top">
-1
+<td width="9%" align="left" valign="top">
+&#160;
 </td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:2')" name="code2model" class="code2model">&lt;S4&gt;/BLUE LED</a>
-</td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.BLUELED_Value
-</td>
-<td width="21%" align="left" valign="top">
-uint8_T
-</td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
 <tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:7')" name="code2model" class="code2model">&lt;S4&gt;/GREEN LED</a>
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1659')" name="code2model" class="code2model">&lt;S7&gt;/GPIO Setup</a>
 </td>
-<td width="26%" align="left" valign="top">
-Feedback_3_P.GREENLED_Value
-</td>
-<td width="21%" align="left" valign="top">
-uint8_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:5')" name="code2model" class="code2model">&lt;S4&gt;/GPIO Setup</a>
-</td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.GPIOSetup_p3
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint8_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
 </tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('Feedback_3:5')" name="code2model" class="code2model">&lt;S4&gt;/GPIO Setup</a>
+<tr class="even">
+<td width="38%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('Feedback_3:1659')" name="code2model" class="code2model">&lt;S7&gt;/GPIO Setup</a>
 </td>
-<td width="26%" align="left" valign="top">
+<td width="23%" align="left" valign="top">
 Feedback_3_P.GPIOSetup_p4
 </td>
-<td width="21%" align="left" valign="top">
+<td width="19%" align="left" valign="top">
 uint8_T
 </td>
-<td width="10%" align="right" valign="top">
+<td width="9%" align="left" valign="top">
+&#160;
+</td>
+<td width="9%" align="right" valign="top">
 1
 </td>
 
