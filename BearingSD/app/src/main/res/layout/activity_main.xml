@@ -346,7 +346,6 @@
                             android:gravity="center"
                             android:layout_weight="2"
                             android:ems="10"
-                            android:inputType="numberDecimal"
                             android:maxLength="4"
                             android:singleLine="true"
                             android:textAlignment="center"

@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
     private int latchHeight = -1;
     // Height References
-    private int heightRef = 9;
+    private int heightRef = 0;
+    private double curHeight = 0.0;
     private int range = 5;
-
+    private boolean latched = false;
     // Bluetooth universals
     private boolean isBtConnected = false;
     BluetoothAdapter myBluetooth;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         latchButton = findViewById(R.id.latchButton);
 
         // Set default height to latched
-        hover.setText("0.9");
+        hover.setText("-");
         upButton.setClickable(false);
         downButton.setClickable(false);
         latchButton.setClickable(false);
@@ -100,47 +101,46 @@ public class MainActivity extends AppCompatActivity {
 
     public void hoverDown(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
-        double hovF = Double.valueOf(hover.getText().toString());
+        //double hovF = Double.valueOf(hover.getText().toString());
+        if (!latched) {
+            if (curHeight <= 120) {
+                setBtOutput(view, lower);
 
-        if (hovF <= 120) {
-            setBtOutput(view,lower);
-            heightRef += 1;
-            hovF += .1;
-            hovF = Math.round(hovF*100.0)/100.0;
-            String hovS = String.valueOf(hovF);
-            hover.setText(hovS);
+                curHeight += .1;
+                curHeight = Math.round(curHeight * 100.0) / 100.0;
+                String hovS = String.valueOf(curHeight);
+                hover.setText(hovS);
+            }
         }
     }
 
     public void hoverUp(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
-        double hovF = Double.valueOf(hover.getText().toString());
-        if (hovF > -25) {
-            setBtOutput(view,raise);
-            hovF -= .1;
-            heightRef -= 1;
-            if (hovF < 0) {
-                hovF = 0.0;
+        //double hovF = Double.valueOf(hover.getText().toString());
+        if (!latched) {
+            if (curHeight > -25) {
+                curHeight -= .1;
+                if (curHeight < 0) {
+                    curHeight = 0.0;
+                } else {
+                    setBtOutput(view, raise);
+                }
+                curHeight = Math.round(curHeight * 100.0) / 100.0;
+                String hovS = String.valueOf(curHeight);
+                hover.setText(hovS);
             }
-            hovF = Math.round(hovF*100.0)/100.0;
-            String hovS = String.valueOf(hovF);
-            hover.setText(hovS);
         }
-
     }
 
     public void latchPlate(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         if (latchHeight < 0) {
             setBtOutput(view, latch);
-            heightRef = 0;
-            latchHeight = heightRef;
-            hover.setText("9.9");
+            hover.setText("LATCHED");
         } else {
             setBtOutput(view, latch);
-            heightRef = latchHeight;
             latchHeight = -1;
-            hover.setText(Float.toString(heightRef));
+            hover.setText(Double.toString(curHeight));
         }
     }
 
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 downButton.setClickable(false);
                 latchButton.setClickable(false);
                 btAdd.setText("Disconnected");
-                hover.setText("0.0");
+                hover.setText("-");
 
             } catch (IOException e) {
             //catch (Exception e) {
@@ -221,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     btOutput.write(latch);
                     btOutput.write(0x30);
+                    latched = true;
                 } catch (IOException e) {
                     Toast.makeText(getApplicationContext(),"Failed to send initial latch",Toast.LENGTH_SHORT).show();
                 }
