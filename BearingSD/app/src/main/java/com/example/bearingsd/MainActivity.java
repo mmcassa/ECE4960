@@ -36,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private int latchHeight = -1;
     // Height References
     private int heightRef = 0;
-    private double curHeight = 0.0;
     private int range = 5;
+
+    private double curHeight = 0.0;
+
     private boolean latched = false;
     // Bluetooth universals
     private boolean isBtConnected = false;
@@ -58,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
     private Button upButton;
     private Button downButton;
     private Button latchButton;
-
+    private TextView massText;
+    private TextView massTitle;
     // Classes
     InputThread streamRead;
 
@@ -82,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         upButton = findViewById(R.id.moveUpButton);
         downButton = findViewById(R.id.moveDownButton);
         latchButton = findViewById(R.id.latchButton);
+        massText = findViewById(R.id.massText);
+        massTitle = findViewById(R.id.massTitle);
 
         // Set default height to latched
         hover.setText("-");
@@ -236,8 +241,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class InputThread extends Thread {
-        int inBytes = 4;
-        byte[] buf = new byte[inBytes];
+        int inBytes = 8;
+        byte[] buf = new byte[inBytes/2];
         ByteBuffer bbuf;
 
         @Override
@@ -250,19 +255,19 @@ public class MainActivity extends AppCompatActivity {
             int barSelect = 1;
             seekBars = findViewById(R.id.arleBar);
 
-            try {
+            /*try {
                 btInput.skip(btInput.available() % 12);
             } catch (IOException e) {
                 Toast.makeText(getApplicationContext(),"Skip error.",Toast.LENGTH_LONG).show();
             }
-
+            */
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
                     while(isBtConnected && btSocket.isConnected() &&  btInput.available() < inBytes) {
                     }
                     if (isBtConnected && btSocket != null && btSocket.isConnected()) {
-                        isBufEmpty = btInput.read(buf, 0, inBytes);
+                        isBufEmpty = btInput.read(buf, 0, inBytes/2);
                     } else {
                         if (!isBtConnected || !(btSocket.isConnected()))
                             break;
@@ -273,46 +278,44 @@ public class MainActivity extends AppCompatActivity {
                         bbuf = ByteBuffer.wrap(buf);
                         bbuf.order(ByteOrder.LITTLE_ENDIAN);
                         bufInt = bbuf.getInt();
-                        if (bufInt < 0 || bufInt > 30) {
+                        if (bufInt % 1000000 != 0 || !(bufInt / 1000000 >= 1 || bufInt / 1000000 <= 5)) {
                             if (isBtConnected && btSocket != null)
-                                btInput.skip(7);
+                                btInput.skip(1);
                             else {
+                                isBtConnected = false;
                                 Toast.makeText(getApplicationContext(), "Error while ubf skip 1", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                         } else {
-                            accuracy = (bufInt - heightRef);
-                            if (accuracy != 0.0)
-                                accuracy /= range;
-
-                            if (Math.abs(accuracy) <= .1)
-                                seekBars.setThumb(getDrawable(R.drawable.thumb_green));
-                            else if (Math.abs(accuracy) <= .2)
-                                seekBars.setThumb(getDrawable(R.drawable.thumb_yellow));
-                            else
-                                seekBars.setThumb(getDrawable(R.drawable.custom_thumb));
-
-
-                            if (accuracy >= 1)
-                                seekBars.setProgress(95);
-                            else if (accuracy <= -1)
-                                seekBars.setProgress(-95);
-                            else
-                                seekBars.setProgress((int) (accuracy*100));
-
-                            heightTxt = ((double) bufInt/10) + " mm";//+ Integer.toHexString(bufInt);
-                            earlHeight.setText(heightTxt);
-
-                            if (++barSelect == 4) {
-                                barSelect = 1;
-                                seekBars = findViewById(R.id.arleBar);
-                                earlHeight = findViewById(R.id.arleHeight);
-                            } else if (barSelect == 2) {
-                                seekBars = findViewById(R.id.earlBar);
-                                earlHeight = findViewById(R.id.earlHeight);
+                            if (isBtConnected && btSocket != null && btSocket.isConnected()) {
+                                isBufEmpty = btInput.read(buf, 0, inBytes/2);
                             } else {
-                                seekBars = findViewById(R.id.lareBar);
-                                earlHeight = findViewById(R.id.lareHeight);
+                                if (!isBtConnected || !(btSocket.isConnected()))
+                                    break;
+                                isBufEmpty = 0;
+                            }
+                            if (isBufEmpty == 4) {
+                                bbuf = ByteBuffer.wrap(buf);
+                                bbuf.order(ByteOrder.LITTLE_ENDIAN);
+                                switch (bufInt / 1000000) {
+                                    case 1:
+                                        updateSeek((SeekBar) findViewById(R.id.arleBar),(TextView) findViewById(R.id.arleHeight),bbuf.getInt());
+                                        break;
+                                    case 2:
+                                        updateSeek((SeekBar) findViewById(R.id.earlBar),(TextView) findViewById(R.id.earlHeight),bbuf.getInt());
+                                        break;
+                                    case 3:
+                                        updateSeek((SeekBar) findViewById(R.id.lareBar),(TextView) findViewById(R.id.lareHeight),bbuf.getInt());
+                                        break;
+                                    case 4:
+                                        verifyFloat(bbuf.getInt());
+                                        break;
+                                    case 5:
+                                        updateMass(bbuf.getInt());
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
                     } else {
@@ -326,6 +329,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } catch (IOException e) {
                     Toast.makeText(getApplicationContext(),"Error while reading",Toast.LENGTH_SHORT).show();
+                    break;
                 }
 
             }
@@ -341,6 +345,49 @@ public class MainActivity extends AppCompatActivity {
                 btAdd.setText("Disconnected");
             }
         }
-    }
+
+        private void updateMass(double bufMass) {
+            String mText = bufMass + " g";
+            massText.setText(mText);
+        }
+
+        private void updateSeek(SeekBar bar, TextView barText, int bufHeight) {
+            double accuracy = bufHeight - (curHeight*10);
+            String heightTxt;
+            if (accuracy != 0.0) {
+                accuracy /= range;
+            }
+
+            // Set thumb color
+            if (Math.abs(accuracy) <= .1)
+                bar.setThumb(getDrawable(R.drawable.thumb_green));
+            else if (Math.abs(accuracy) <= .2)
+                bar.setThumb(getDrawable(R.drawable.thumb_yellow));
+            else
+                bar.setThumb(getDrawable(R.drawable.custom_thumb));
+
+            // Set bar progress
+            if (accuracy >= .83)
+                seekBars.setProgress(83);
+            else if (accuracy <= -.83)
+                seekBars.setProgress(-83);
+            else
+                seekBars.setProgress((int) (accuracy * 100));
+
+            // Set bar text
+            heightTxt = ((double) bufHeight / 10) + " mm";//+ Integer.toHexString(bufInt);
+            barText.setText(heightTxt);
+
+
+
+        }
+
+        private void verifyFloat(int bufHeight) {
+            String heightTxt = bufHeight + " mm";
+            massTitle.setText(heightTxt);
+        }
+
+
+    } // End class
 }
 
