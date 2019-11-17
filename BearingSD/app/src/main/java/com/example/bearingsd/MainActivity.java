@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void latchPlate(View view) {
-        //TextView hover = (TextView) findViewById(R.id.heightDesire);
+
         if (latchHeight < 0) {
             setBtOutput(view, latch);
             latchHeight = (int)(curHeight * 10);
@@ -225,9 +225,7 @@ public class MainActivity extends AppCompatActivity {
                 streamRead = new InputThread();
                 streamRead.start();
                 try {
-                    btOutput.write(latch);
                     btOutput.write(0x30);
-                    latched = true;
                 } catch (IOException e) {
                     Toast.makeText(getApplicationContext(),"Failed to send initial latch",Toast.LENGTH_SHORT).show();
                 }
