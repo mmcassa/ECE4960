@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         if (latchHeight < 0) {
             setBtOutput(view, latch);
+            latchHeight = (int)(curHeight * 10);
             hover.setText("LATCHED");
         } else {
             setBtOutput(view, latch);
@@ -255,12 +256,6 @@ public class MainActivity extends AppCompatActivity {
             int barSelect = 1;
             seekBars = findViewById(R.id.arleBar);
 
-            /*try {
-                btInput.skip(btInput.available() % 12);
-            } catch (IOException e) {
-                Toast.makeText(getApplicationContext(),"Skip error.",Toast.LENGTH_LONG).show();
-            }
-            */
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
@@ -278,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                         bbuf = ByteBuffer.wrap(buf);
                         bbuf.order(ByteOrder.LITTLE_ENDIAN);
                         bufInt = bbuf.getInt();
-                        if (bufInt % 1000000 != 0 || !(bufInt / 1000000 >= 1 || bufInt / 1000000 <= 5)) {
+                        if (bufInt % 100000 != 0 || !(bufInt / 100000 >= 1 || bufInt / 100000 <= 5)) {
                             if (isBtConnected && btSocket != null)
                                 btInput.skip(1);
                             else {
@@ -297,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
                             if (isBufEmpty == 4) {
                                 bbuf = ByteBuffer.wrap(buf);
                                 bbuf.order(ByteOrder.LITTLE_ENDIAN);
-                                switch (bufInt / 1000000) {
+                                switch (bufInt / 100000) {
                                     case 1:
                                         updateSeek((SeekBar) findViewById(R.id.arleBar),(TextView) findViewById(R.id.arleHeight),bbuf.getInt());
                                         break;
@@ -383,7 +378,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void verifyFloat(int bufHeight) {
-            String heightTxt = bufHeight + " mm";
+            String heightTxt;
+            if (bufHeight != 100)
+                heightTxt = bufHeight + " mm";
+            else
+                heightTxt = "Latch";
             massTitle.setText(heightTxt);
         }
 
