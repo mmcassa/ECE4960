@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class InputThread extends Thread {
-        int inBytes = 8;
+        int inBytes = 4;
         byte[] buf = new byte[inBytes/2];
         ByteBuffer bbuf;
 
@@ -257,10 +257,10 @@ public class MainActivity extends AppCompatActivity {
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
-                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < inBytes) {
+                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < inBytes*2) {
                     }
                     if (isBtConnected && btSocket != null && btSocket.isConnected()) {
-                        isBufEmpty = btInput.read(buf, 0, inBytes/2);
+                        isBufEmpty = btInput.read(buf, 0, inBytes);
                     } else {
                         if (!isBtConnected || !(btSocket.isConnected()))
                             break;
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         } else {
                             if (isBtConnected && btSocket != null && btSocket.isConnected()) {
-                                isBufEmpty = btInput.read(buf, 0, inBytes/2);
+                                isBufEmpty = btInput.read(buf, 0, inBytes);
                             } else {
                                 if (!isBtConnected || !(btSocket.isConnected()))
                                     break;
@@ -377,7 +377,7 @@ public class MainActivity extends AppCompatActivity {
 
         private void verifyFloat(int bufHeight) {
             String heightTxt;
-            if (bufHeight != 100)
+            if (bufHeight < 0)
                 heightTxt = bufHeight + " mm";
             else
                 heightTxt = "Latch";
