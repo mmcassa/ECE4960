@@ -240,24 +240,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class InputThread extends Thread {
-        int inBytes = 4;
+        int inBytes = 8;
         byte[] buf = new byte[inBytes];
         ByteBuffer bbuf;
 
         @Override
         public void run() {
-            String heightTxt;
             int isBufEmpty = 0;
             int bufInt;
-            double accuracy;
-
-            int barSelect = 1;
-            seekBars = findViewById(R.id.arleBar);
 
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
-                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < (inBytes*2)) {
+                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < (inBytes)) {
                     }
                     if (isBtConnected && btSocket != null && btSocket.isConnected()) {
                         isBufEmpty = btInput.read(buf, 0, inBytes);
@@ -272,14 +267,17 @@ public class MainActivity extends AppCompatActivity {
                         bbuf.order(ByteOrder.LITTLE_ENDIAN);
                         bufInt = bbuf.getInt();
                         if (bufInt % 100000 != 0 || !(bufInt / 100000 >= 1 || bufInt / 100000 <= 5)) {
-                            if (isBtConnected && btSocket != null)
+                            if (isBtConnected && btSocket != null) {
+                                while (isBtConnected && btSocket.isConnected() && btInput.available() < 1) {
+                                }
                                 btInput.skip(1);
-                            else {
+                            } else {
                                 isBtConnected = false;
-                                Toast.makeText(getApplicationContext(), "Error while ubf skip 1", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Error while reading.", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                         } else {
+                            /*
                             if (isBtConnected && btSocket != null && btSocket.isConnected()) {
                                 isBufEmpty = btInput.read(buf, 0, inBytes);
                             } else {
@@ -290,6 +288,8 @@ public class MainActivity extends AppCompatActivity {
                             if (isBufEmpty == 4) {
                                 bbuf = ByteBuffer.wrap(buf);
                                 bbuf.order(ByteOrder.LITTLE_ENDIAN);
+
+                             */
                                 switch (bufInt / 100000) {
                                     case 1:
                                         updateSeek((SeekBar) findViewById(R.id.arleBar),(TextView) findViewById(R.id.arleHeight),bbuf.getInt());
@@ -307,13 +307,14 @@ public class MainActivity extends AppCompatActivity {
                                         updateMass(bbuf.getInt());
                                         break;
                                     default:
+                                        bbuf.clear();
                                         break;
                                 }
-                            }
+                            //}
                         }
                     } else {
                         if (isBtConnected && btSocket != null)
-                            btInput.skip(inBytes-isBufEmpty);
+                            Toast.makeText(getApplicationContext(),"Misread",Toast.LENGTH_SHORT).show();
                         else {
                             Toast.makeText(getApplicationContext(),"Error while buf skip",Toast.LENGTH_SHORT).show();
                             break;
@@ -339,9 +340,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        private void updateMass(double bufMass) {
-            String mText = bufMass + " g";
-            massText.setText(mText);
+        private void updateMass(int bufMass) {
+            if (bufMass < 2000) {
+                String mText = bufMass + " g";
+                massText.setText(mText);
+            } else {
+                massText.setText("Err");
+            }
         }
 
         private void updateSeek(SeekBar bar, TextView barText, int bufHeight) {
@@ -366,9 +371,13 @@ public class MainActivity extends AppCompatActivity {
                 seekBars.setProgress(-83);
             else
                 seekBars.setProgress((int) (accuracy * 100));
-            
+
             // Set bar text
-            heightTxt = ((double) bufHeight / 10) + " mm";//+ Integer.toHexString(bufInt);
+            if (bufHeight != 0)
+                heightTxt = ((double) bufHeight / 10) + " mm";//+ Integer.toHexString(bufInt);
+            else
+                heightTxt = "0.0 mm";
+
             barText.setText(heightTxt);
 
 
@@ -377,10 +386,13 @@ public class MainActivity extends AppCompatActivity {
 
         private void verifyFloat(int bufHeight) {
             String heightTxt;
-            if (bufHeight < 0)
+            //if (bufHeight < 0)
+            if (bufHeight < 40 && bufHeight > -100)
                 heightTxt = bufHeight + " mm";
             else
-                heightTxt = "Latch";
+                heightTxt = "Err";
+            //else
+            //    heightTxt = "Latch";
             massTitle.setText(heightTxt);
         }
 
