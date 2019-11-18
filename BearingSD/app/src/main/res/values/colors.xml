@@ -22,4 +22,5 @@
     <color name="colorTransparent">#99C20000</color>
     <color name="whiteTransparent2">#16FFFFFF</color>
     <color name="whiteTransparent3">#36FFFFFF</color>
+    <color name="backG">#5D00C7</color>
 </resources>

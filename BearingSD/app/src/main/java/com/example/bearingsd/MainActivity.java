@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class InputThread extends Thread {
         int inBytes = 4;
-        byte[] buf = new byte[inBytes/2];
+        byte[] buf = new byte[inBytes];
         ByteBuffer bbuf;
 
         @Override
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
             while(isBtConnected) {
                 try {
                     // Read from Input stream 4 bytes
-                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < inBytes*2) {
+                    while(isBtConnected && btSocket.isConnected() &&  btInput.available() < (inBytes*2)) {
                     }
                     if (isBtConnected && btSocket != null && btSocket.isConnected()) {
                         isBufEmpty = btInput.read(buf, 0, inBytes);
@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                         isBufEmpty = 0;
                     }
 
-                    if (isBufEmpty == 4) {
+                    if (isBufEmpty == inBytes) {
                         bbuf = ByteBuffer.wrap(buf);
                         bbuf.order(ByteOrder.LITTLE_ENDIAN);
                         bufInt = bbuf.getInt();
@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } else {
                         if (isBtConnected && btSocket != null)
-                            btInput.skip(inBytes-isBufEmpty+8);
+                            btInput.skip(inBytes-isBufEmpty);
                         else {
                             Toast.makeText(getApplicationContext(),"Error while buf skip",Toast.LENGTH_SHORT).show();
                             break;
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
                 seekBars.setProgress(-83);
             else
                 seekBars.setProgress((int) (accuracy * 100));
-
+            
             // Set bar text
             heightTxt = ((double) bufHeight / 10) + " mm";//+ Integer.toHexString(bufInt);
             barText.setText(heightTxt);
