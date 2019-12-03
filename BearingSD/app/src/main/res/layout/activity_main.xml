@@ -25,13 +25,14 @@
                 android:gravity="center"
                 android:text="@string/app_name"
                 android:textAlignment="center"
-                android:textColor="@color/whiteTransparent"
+                android:textColor="@color/colorTransparent"
                 android:textSize="60sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/monitorFrame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingTop="0dp"
@@ -109,6 +110,7 @@
                     android:layout_weight="7"
                     android:clickable="false"
                     android:contextClickable="false"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <SeekBar
@@ -230,7 +232,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="25dp"
+            android:padding="15dp"
             android:layout_weight="3">
         <ImageView
             android:layout_width="match_parent"
@@ -325,12 +327,13 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/adjustFrame"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingTop="0dp"
             android:paddingBottom="25dp"
-            android:paddingRight="25dp"
-            android:paddingLeft="25dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             android:layout_weight="4">
             <ImageView
                 android:layout_width="match_parent"
@@ -383,7 +386,7 @@
                             android:gravity="center"
                             android:layout_weight="2"
                             android:ems="10"
-                            android:maxLength="4"
+                            android:maxLength="5"
                             android:singleLine="true"
                             android:textAlignment="center"
                             android:textColor="@color/textPrimary"

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private static byte lower = 0x31;
     private static byte raise = 0x32;
 
-    private int latchHeight = -1;
     // Height References
     private int heightRef = 0;
     private int range = 5;
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private Set<BluetoothDevice> btDevs;
 
     // App layout objects
+    private FrameLayout monitorFrame;
+    private FrameLayout adjustLayout;
     private TextView btAdd;
     private TextView earlHeight;
     private TextView hover;
@@ -87,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         latchButton = findViewById(R.id.latchButton);
         massText = findViewById(R.id.massText);
         massTitle = findViewById(R.id.massTitle);
+        monitorFrame = findViewById(R.id.monitorFrame);
+        adjustLayout = findViewById(R.id.adjustFrame);
 
         // Set default height to latched
         hover.setText("-");
@@ -95,6 +99,15 @@ public class MainActivity extends AppCompatActivity {
         latchButton.setClickable(false);
     }
 
+    public void changeLayout() {
+        if (isBtConnected) {
+            monitorFrame.setVisibility(FrameLayout.VISIBLE);
+            adjustLayout.setVisibility(FrameLayout.VISIBLE);
+        } else {
+            monitorFrame.setVisibility(FrameLayout.GONE);
+            adjustLayout.setVisibility(FrameLayout.INVISIBLE);
+        }
+    }
     public void setBtOutput(View view,byte change) {
         try {
             btSocket.getOutputStream().write(change);
@@ -107,51 +120,51 @@ public class MainActivity extends AppCompatActivity {
     public void hoverDown(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         //double hovF = Double.valueOf(hover.getText().toString());
-        if (!latched) {
+        //if (!latched) {
             if (curHeight <= 120) {
                 setBtOutput(view, lower);
 
                 curHeight += .1;
                 curHeight = Math.round(curHeight * 100.0) / 100.0;
                 String hovS = String.valueOf(curHeight);
-                hover.setText(hovS);
+                //hover.setText(hovS);
             }
-        }
+        //}
     }
 
     public void hoverUp(View view) {
         //TextView hover = (TextView) findViewById(R.id.heightDesire);
         //double hovF = Double.valueOf(hover.getText().toString());
-        if (!latched) {
-            if (curHeight > -25) {
+        //if (!latched) {
+            if (curHeight >= -25) {
                 curHeight -= .1;
-                if (curHeight < 0) {
+                if (curHeight <= -24) {
                     curHeight = 0.0;
                 } else {
                     setBtOutput(view, raise);
                 }
                 curHeight = Math.round(curHeight * 100.0) / 100.0;
                 String hovS = String.valueOf(curHeight);
-                hover.setText(hovS);
+                //hover.setText(hovS);
             }
-        }
+        //}
     }
 
     public void latchPlate(View view) {
 
-        if (latchHeight < 0) {
+        if (!latched) {
             setBtOutput(view, latch);
-            latchHeight = (int)(curHeight * 10);
-            hover.setText("LATCHED");
+            hover.setText("LOCK");
+            latched = true;
         } else {
             setBtOutput(view, latch);
-            latchHeight = -1;
             hover.setText(Double.toString(curHeight));
+            latched = false;
         }
     }
 
     public void checkConnection(View view) {
-        // If not connected attempt connect
+
         if(!isBtConnected) {
             for (BluetoothDevice bluetoothDevice : btDevs = myBluetooth.getBondedDevices()) {
                 if (bluetoothDevice.getName().equals("HC-05")) {
@@ -177,12 +190,13 @@ public class MainActivity extends AppCompatActivity {
                 latchButton.setClickable(false);
                 btAdd.setText("Disconnected");
                 hover.setText("-");
-
+                curHeight = 0.0;
             } catch (IOException e) {
             //catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Failed to close Socket", Toast.LENGTH_SHORT).show();
             }
         }
+        //changeLayout();
     }
 
     private class ConnectBT extends AsyncTask<Void, Void, Void> {
@@ -266,30 +280,23 @@ public class MainActivity extends AppCompatActivity {
                         bbuf = ByteBuffer.wrap(buf);
                         bbuf.order(ByteOrder.LITTLE_ENDIAN);
                         bufInt = bbuf.getInt();
-                        if (bufInt % 100000 != 0 || !(bufInt / 100000 >= 1 || bufInt / 100000 <= 5)) {
-                            if (isBtConnected && btSocket != null) {
-                                while (isBtConnected && btSocket.isConnected() && btInput.available() < 1) {
+                        if (bufInt == 0 || bufInt % 100000 != 0 || !(bufInt / 100000 >= 1 || bufInt / 100000 <= 5)) {
+                            if (isBtConnected && btSocket != null && btSocket.isConnected()) {
+                                if (isBtConnected && btSocket.isConnected() && btInput.available() >= 1) {
+                                    btInput.skip(1);
                                 }
-                                btInput.skip(1);
+
+                                if (!btAdd.getText().equals("Syncing..."))
+                                    btAdd.setText("Syncing...");
+                                //Toast.makeText(getApplicationContext(),"Misread",Toast.LENGTH_SHORT).show();
                             } else {
                                 isBtConnected = false;
                                 Toast.makeText(getApplicationContext(), "Error while reading.", Toast.LENGTH_SHORT).show();
                                 break;
                             }
                         } else {
-                            /*
-                            if (isBtConnected && btSocket != null && btSocket.isConnected()) {
-                                isBufEmpty = btInput.read(buf, 0, inBytes);
-                            } else {
-                                if (!isBtConnected || !(btSocket.isConnected()))
-                                    break;
-                                isBufEmpty = 0;
-                            }
-                            if (isBufEmpty == 4) {
-                                bbuf = ByteBuffer.wrap(buf);
-                                bbuf.order(ByteOrder.LITTLE_ENDIAN);
-
-                             */
+                                if (!btAdd.getText().equals("Connected"))
+                                    btAdd.setText("Connected");
                                 switch (bufInt / 100000) {
                                     case 1:
                                         updateSeek((SeekBar) findViewById(R.id.arleBar),(TextView) findViewById(R.id.arleHeight),bbuf.getInt());
@@ -310,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                                         bbuf.clear();
                                         break;
                                 }
-                            //}
+                                //massTitle.setText(bufInt/100000);
                         }
                     } else {
                         if (isBtConnected && btSocket != null)
@@ -337,21 +344,24 @@ public class MainActivity extends AppCompatActivity {
                 downButton.setClickable(false);
                 latchButton.setClickable(false);
                 btAdd.setText("Disconnected");
+                //changeLayout();
             }
         }
 
         private void updateMass(int bufMass) {
-            if (bufMass < 2000) {
+            if (bufMass < 9999 && bufMass > -9999) {
                 String mText = bufMass + " g";
                 massText.setText(mText);
-            } else {
-                massText.setText("Err");
-            }
+            } //else {
+                //massText.setText("Err");
+            //}
         }
 
         private void updateSeek(SeekBar bar, TextView barText, int bufHeight) {
             double accuracy = bufHeight - (curHeight*10);
             String heightTxt;
+
+            /*
             if (accuracy != 0.0) {
                 accuracy /= range;
             }
@@ -371,13 +381,18 @@ public class MainActivity extends AppCompatActivity {
                 seekBars.setProgress(-83);
             else
                 seekBars.setProgress((int) (accuracy * 100));
-
+            */
             // Set bar text
-            if (bufHeight != 0)
-                heightTxt = ((double) bufHeight / 10) + " mm";//+ Integer.toHexString(bufInt);
-            else
+            if (bufHeight != 0) {
+                if (bufHeight > -10 && bufHeight < 50)
+                    heightTxt = (((double) bufHeight) / 10) + " mm";//+ Integer.toHexString(bufInt);
+                else
+                    heightTxt = (String) barText.getText();//"Err";
+
+            } else
                 heightTxt = "0.0 mm";
 
+            if (!heightTxt.equals(barText.getText()))
             barText.setText(heightTxt);
 
 
@@ -387,13 +402,30 @@ public class MainActivity extends AppCompatActivity {
         private void verifyFloat(int bufHeight) {
             String heightTxt;
             //if (bufHeight < 0)
-            if (bufHeight < 40 && bufHeight > -100)
-                heightTxt = bufHeight + " mm";
-            else
-                heightTxt = "Err";
-            //else
-            //    heightTxt = "Latch";
-            massTitle.setText(heightTxt);
+            if (bufHeight < 40 && bufHeight > -11) {
+                //heightTxt = ((double)bufHeight/10) + " mm";
+                if (bufHeight != -10) {
+                    if (bufHeight != 0)
+                        curHeight = ((double) bufHeight) / 10;
+                    else
+                        curHeight = 0.0;
+                    latched = false;
+                    heightTxt = Double.toString(curHeight);
+                    if (!heightTxt.equals(hover.getText()))
+                        hover.setText(heightTxt);
+                } else {
+                    if (!latched)
+                        latched = true;
+                    hover.setText("LOCK");
+
+                }
+            } /*else {
+                if (!hover.getText().equals("~"+Double.toString(curHeight)) || !hover.getText().equals("~LOCK"))
+                    if(!latched)
+                        hover.setText("~"+Double.toString(curHeight));
+                    else
+                        hover.setText("~LOCK");
+            }*/
         }
 
 
