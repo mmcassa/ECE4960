@@ -110,7 +110,6 @@
                     android:layout_weight="7"
                     android:clickable="false"
                     android:contextClickable="false"
-                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <SeekBar
@@ -387,6 +386,7 @@
                             android:layout_weight="2"
                             android:ems="10"
                             android:maxLength="5"
+                            android:text="0.0"
                             android:singleLine="true"
                             android:textAlignment="center"
                             android:textColor="@color/textPrimary"
